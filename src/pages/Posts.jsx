@@ -5,26 +5,40 @@ import Shelf from '../components/Hf-shelf';
 import Footer from '../components/Footer';
 import PostsBlock from '../components/Posts';
 
-import { AppContext } from '../App';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import Loader from '../components/Loader';
 
-
-const Posts = () => {
-  const { user } = React.useContext(AppContext);
-
+const Posts = ({ photos, isLoading }) => {
   return (
     <>
       <Header />
       <div className="wrapper">
-        <PostsBlock  
-                  // id={id}
-                  userName='Artur'
-                  // avatarUrl={author.avatarUrl}
-                  userId={1}
-                  imgUrl=''
-                  likes={10}
-                  isLikeByYou={false}
-                  comments={[{text: 'eqwe', nickname: 'voefew'}, {text: 'eqwe', nickname: 'voefew'}, {text: 'eqwe', nickname: 'voefew'}, {text: 'eqwe', nickname: 'voefew'}]}
-                  />
+        <InfiniteScroll
+          dataLength={photos ? photos.length : 0}
+          next={() => console.log('next')}
+          hasMore={true}
+          // loader={'loading'}
+          endMessage={<p>Вы пролистали все посты</p>}
+        >
+          {isLoading ? (
+            <Loader/>
+          ) : (
+            photos.map(({ author, imgUrl, id, likes, comments }) => (
+              <PostsBlock
+                key={id}
+                id={id}
+                userName={author.nickname}
+                avatarUrl={author.avatarUrl}
+                userId={author.id}
+                imgUrl={imgUrl}
+                likes={likes.length}
+                isLiked={true}
+                comments={comments}
+              />
+            ))
+          )}
+        </InfiniteScroll>
+
         <Shelf />
         <Footer />
       </div>

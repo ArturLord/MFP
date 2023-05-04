@@ -4,7 +4,7 @@ import styles from './Header.module.scss';
 import { useLocation, Link } from 'react-router-dom';
 import UserBadge from '../UserBadge';
 
-const Header = () => {
+const Header = ({nickName, avatarUrl}) => {
   const location = useLocation();
   const locationPage = location.pathname !== '/' && location.pathname !== '/registration';
   const [downBlock, setDownBlock] = React.useState(false);

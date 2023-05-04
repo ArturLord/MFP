@@ -13,7 +13,7 @@ const UserBadge = ({ nickName, avatarUrl, id, onClickButton }) => {
   return (
     <div onClick={onClickButton} className={styles.UserBadge}>
       {avatarUrl ? (
-        <img className={styles.avatar} src='img/icons/icon-vk.png' alt="avatar" />
+        <img className={styles.avatar} src={avatarUrl} alt="avatar" />
       ) : (
         <div className={styles.placeholder}></div>
       )}

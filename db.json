@@ -1,9 +1,6 @@
 {
     "posts": [
       {
-        "id": 1
-      },
-      {
         "id": 2,
         "imgUrl": "https://img.desktopwallpapers.ru/rocks/pics/wide/1920x1200/27640f370156a0e0ae3ee9608fc8480a.jpg",
         "likes": [
