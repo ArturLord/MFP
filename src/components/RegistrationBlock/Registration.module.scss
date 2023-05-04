@@ -1,0 +1,99 @@
+.registrationBlock {
+  width: 400px;
+  height: 700px;
+  font-size: 23px;
+  margin:  auto;
+  border-radius: 4px;
+  text-align: center;
+  background-color: rgb(191, 185, 178);
+
+  .upBlock {
+    .logo {
+      font-family: 'Dancing Script', cursive;
+      padding-top: 30px;
+      font-size: 46px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      width: 320px;
+      margin: 0 auto;
+      margin-bottom: 25px;
+      font-weight: bold;
+      font-size: 18px;
+      opacity: 0.8;
+    }
+  }
+
+  .row {
+    .formGroup {
+      input {
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+        color: rgb(39, 34, 34);
+        padding: 15px 10px;
+        border: none;
+        border-radius: 2px;
+        padding-left: 5px;
+        margin-bottom: 8px;
+      }
+      .btnForm {
+        width: 80%;
+        height: 45px;
+        background: rgb(19, 18, 18);
+        padding: 12px;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        margin-bottom: 30px;
+
+        &:hover {
+          color: #23d5ab;
+          opacity: 0.9;
+        }
+      }
+    }
+
+    .enterBlock {
+      font-size: 20px;
+      .iconVk {
+        width: 22px;
+        height: 22px;
+        margin-right: 5px;
+        vertical-align: text-bottom;
+      }
+      a {
+        // font-size: 20px;
+        color: #1f1f21;
+        &:hover {
+          color: #535353;
+        }
+      }
+
+      .enter {
+        a {
+          margin-left: 3px;
+        }
+      }
+      .enterBlockP {
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+    }
+    .linkApplications {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 30px;
+
+      img {
+        width: 160px;
+      }
+
+      a:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+}

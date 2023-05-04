@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Dancing+Script&family=Roboto&family=Send+Flowers&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  outline: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  box-sizing: border-box;
+  text-decoration: none;
+  box-sizing: border-box;
+  color: #000;
+}
+
+body {
+  margin: 0;
+  background-color: #1f1f21;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wrapper {
+  width: 90%;
+  height: 600px;
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}

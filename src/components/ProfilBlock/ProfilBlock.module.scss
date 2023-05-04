@@ -1,0 +1,82 @@
+.container {
+  max-width: 50%;
+  min-height: 250px;
+  background-color: rgb(53, 61, 61);
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: 40px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+
+  .content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    .avatar {
+      height: 160px;
+      width: 160px;
+      margin-left: 20px;
+      margin-right: 35px;
+      border-radius: 50%;
+      box-shadow: 1px 1px 15px -5px black;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    .rightBlock {
+      width: 360px;
+      min-height: 200px;
+      margin-top: 30px;
+
+      .upBlock {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 15px;
+
+        span {
+          font-size: 29px;
+          font-weight: 600;
+          margin-left: 10px;
+          margin-right: 20px;
+        }
+
+        .editBtn {
+          background: #111;
+          padding: 20px 25px 10px 25px;
+          color: #fff;
+          border: none;
+          cursor: pointer;
+          border-radius: 5px;
+          font-family: inherit;
+          padding-top: 7px;
+
+          &:hover {
+            opacity: 0.9;
+          }
+        }
+      }
+
+      .lowBlock {
+        display: flex;
+        margin-bottom: 10px;
+
+        span {
+          margin-right: 15px;
+          font-size: 17px;
+          font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+      }
+
+      .lowRow {
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}

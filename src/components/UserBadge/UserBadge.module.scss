@@ -1,0 +1,25 @@
+.userBadge {
+  display: flex;
+  cursor: pointer;
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+
+  .placeholder {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: #efefef;
+  }
+
+  .name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+  }
+}
