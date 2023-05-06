@@ -17,15 +17,25 @@ export const AppContext = React.createContext();
 function App() {
   const [user, setUser] = React.useState();
   const [photoPost, setPhotoPost] = React.useState();
-  const [photos, setPhotos] = React.useState();
+  const [photos, setPhotos] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [visibleModalEdit, setVisibleModalEdit] = React.useState(false);
+  const [page, setPage] = React.useState(1);
+  const [photosTotal, setPhotosTotal] = React.useState(0);
+
+  const nextPage = () => {
+    setPage(page + 1);
+  };
 
   // users
   React.useEffect(() => {
-    async function userData() {
-      const { data } = await axios.get(`${_API}/users`);
+    async function userData(id) {
+      try {
+        const { data } = await api.users.getUser(id)
       setUser(data);
+      } catch (error) {
+        alert('Произошла ошибка при получении пользователя')
+      }
     }
     userData();
   }, []);
@@ -34,20 +44,29 @@ function App() {
   React.useEffect(() => {
     async function postsData() {
       try {
-        const { data } = await api.photos.getPhotos({
+        const prevPhotos = photos;
+        const { data, headers } = await api.photos.getPhotos({
           params: {
-            _page: 0,
+            _page: page,
             _limit: 5,
           },
         });
-        setPhotos(data);
-        setIsLoading(false);
+        if (page === 1) {
+          setPhotosTotal(headers['x-total-count']);
+          setPhotos([...data]);
+          setIsLoading(false);
+        } else {
+          setPhotosTotal(headers['x-total-count']);
+          setPhotos([...prevPhotos, ...data]);
+
+        }
+
       } catch (error) {
         alert('Произошла ошибка при получении постов');
       }
     }
     postsData();
-  }, []);
+  }, [page]);
 
   // postsByUser
   React.useEffect(() => {
@@ -74,7 +93,17 @@ function App() {
         <Route path="/registration" element={<Registration />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/account" element={<PersonalAccount />} />
-        <Route path="/posts" element={<Posts photos={photos} isLoading={isLoading} />} />
+        <Route
+          path="/posts"
+          element={
+            <Posts
+              photos={photos}
+              photosTotal={photosTotal}
+              nextPage={nextPage}
+              isLoading={isLoading}
+            />
+          }
+        />
       </Routes>
     </AppContext.Provider>
   );

@@ -1,7 +1,11 @@
-import { getPhotos } from "./photos";
+import { getPhotos } from './photos';
+import { getUser } from './users';
 
 export const api = {
   photos: {
-    getPhotos
+    getPhotos,
+  },
+  users: {
+    getUser,
   },
 };

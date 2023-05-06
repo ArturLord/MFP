@@ -1,11 +1,10 @@
 import { makeRequest } from './makeRequest';
 
-const URL = '/posts';
+const URL = '/users';
 
-export const getPhotos = (config) =>
+export const getUser = (userId, config) =>
   makeRequest({
-    method: 'GET',
+    method: "GET",
     url: URL,
-  
     ...config,
   });

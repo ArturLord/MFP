@@ -8,22 +8,23 @@ import PostsBlock from '../components/Posts';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from '../components/Loader';
 
-const Posts = ({ photos, isLoading }) => {
+const Posts = ({ photos, isLoading, nextPage, photosTotal }) => {
+
   return (
     <>
       <Header />
       <div className="wrapper">
-        <InfiniteScroll
-          dataLength={photos ? photos.length : 0}
-          next={() => console.log('next')}
-          hasMore={true}
-          // loader={'loading'}
-          endMessage={<p>Вы пролистали все посты</p>}
-        >
-          {isLoading ? (
-            <Loader/>
-          ) : (
-            photos.map(({ author, imgUrl, id, likes, comments }) => (
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <InfiniteScroll
+            dataLength={photos ? photos.length : 0}
+            next={nextPage}
+            hasMore={photos.length < photosTotal}
+            loader={<Loader />}
+            endMessage={<p>Вы пролистали все посты</p>}
+          >
+            {photos.map(({ author, imgUrl, id, likes, comments }) => (
               <PostsBlock
                 key={id}
                 id={id}
@@ -35,9 +36,9 @@ const Posts = ({ photos, isLoading }) => {
                 isLiked={true}
                 comments={comments}
               />
-            ))
-          )}
-        </InfiniteScroll>
+            ))}
+          </InfiniteScroll>
+        )}
 
         <Shelf />
         <Footer />
