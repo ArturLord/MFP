@@ -5,7 +5,7 @@ import  UserLoginBlock  from './userLogin';
 import Shelf from '../components/Hf-shelf';
 import Footer from '../components/Footer';
 
-const Home = () => {
+const Login = () => {
   return (
    <>
     <Header/>
@@ -19,4 +19,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Login;

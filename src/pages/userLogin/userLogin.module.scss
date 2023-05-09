@@ -5,6 +5,8 @@
   margin: 0 auto;
   .leftBlock {
     width: 45%;
+    box-shadow: 0px 0px 25px 3px rgba(196, 226, 249, 0.2);
+    
     .picturesSlide {
       position: relative;
       max-width: 100%;
@@ -59,6 +61,8 @@
     margin-top: 40px;
     margin-right: 100px;
     text-align: center;
+    box-shadow: 0px 0px 25px 3px rgba(166, 207, 238, 0.2);
+
     .userLoginBlock {
       width: 380px;
       height: 520px;
@@ -106,6 +110,7 @@
     }
     .row {
       .formGroup {
+        
         input {
           display: block;
           width: 80%;
@@ -116,12 +121,19 @@
           border-radius: 2px;
           padding-left: 5px;
           margin-bottom: 8px;
+
+
+          &:focus {
+            background-color:#e2f3f9;
+            box-shadow: 0px 0px 25px 3px rgba(46, 46, 46, 0.2);
+
+          }
         }
         .btnForm {
           width: 80%;
           height: 45px;
+          border: none;
           background: rgb(19, 18, 18);
-          padding: 12px;
           color: #fff;
           border-radius: 5px;
           cursor: pointer;

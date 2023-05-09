@@ -9,25 +9,54 @@ import PhotoBlock from '../components/PhotoBlock';
 import { AppContext } from '../App';
 import ModalEditBlock from '../components/ModalEditBlock';
 
+import { redirect, useNavigate } from 'react-router-dom';
+import { getUser } from 'api/users';
+import { useAuth } from 'hooks/useAuth';
+import { useDispatch } from 'react-redux';
+
 const PersonalAccount = () => {
+  const dispatch = useDispatch();
   const { user } = React.useContext(AppContext);
-  const {visibleModalEdit, setVisibleModalEdit} = React.useContext(AppContext);
+  const { visibleModalEdit, setVisibleModalEdit } = React.useContext(AppContext);
+  const { isAuth, email } = useAuth();
+  const navigate = useNavigate();
+
+  // const loader = async () => {
+  //   const user = await getUser();
+  //   if (!user) {
+  //     return redirect('/login');
+  //   }
+  //   return null;
+  // }
 
   return (
     <>
-      <Header />
-      <ModalEditBlock visibleModalEdit={visibleModalEdit} closeModal={() => setVisibleModalEdit(false)} />
-      <div className="wrapper">
-        {user
-          ?.filter((obj) => obj.id === 1)
-          .map((obj) => (
-            <ProfilBlock key={obj.id} {...obj} openModal={() => setVisibleModalEdit(true)} setVisibleModalEdit={setVisibleModalEdit} />
-          ))}
-     
-          <PhotoBlock />
-        <Shelf />
-        <Footer />
-      </div>
+      {isAuth ? (
+        <>
+          <Header />
+          <ModalEditBlock
+            visibleModalEdit={visibleModalEdit}
+            closeModal={() => setVisibleModalEdit(false)}
+          />
+          <div className="wrapper">
+            {user
+              ?.filter((obj) => obj.id === 1)
+              .map((obj) => (
+                <ProfilBlock
+                  key={obj.id}
+                  {...obj}
+                  openModal={() => setVisibleModalEdit(true)}
+                  setVisibleModalEdit={setVisibleModalEdit}
+                />
+              ))}
+            <PhotoBlock />
+            <Shelf />
+            <Footer />
+          </div>
+        </>
+      ) : (
+         navigate('/')
+      )}
     </>
   );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 
-import HomePage from './pages/HomePage';
+import Login from './pages/Login';
 import Registration from './pages/Registration';
 import Settings from './pages/Settings';
 import PersonalAccount from './pages/PersonalAccount';
@@ -15,7 +15,9 @@ import { _API } from './api/makeRequest';
 export const AppContext = React.createContext();
 
 function App() {
-  const [user, setUser] = React.useState();
+  const [user, setUser] = React.useState({});
+  // const [authorizedUser, setAuthorizedUser] = React.useState(undefined);
+
   const [photoPost, setPhotoPost] = React.useState();
   const [photos, setPhotos] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -29,9 +31,9 @@ function App() {
 
   // users
   React.useEffect(() => {
-    async function userData(id) {
+    async function userData() {
       try {
-        const { data } = await api.users.getUser(id)
+        const { data } = await api.users.getUser()
       setUser(data);
       } catch (error) {
         alert('Произошла ошибка при получении пользователя')
@@ -39,6 +41,7 @@ function App() {
     }
     userData();
   }, []);
+
 
   // photos
   React.useEffect(() => {
@@ -89,7 +92,7 @@ function App() {
       }}
     >
       <Routes>
-        <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/account" element={<PersonalAccount />} />

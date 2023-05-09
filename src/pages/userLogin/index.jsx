@@ -1,9 +1,35 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+
+import { setUser } from 'redux/slices/userSlice';
 
 import styles from './userLogin.module.scss';
+import { useDispatch } from 'react-redux';
 
 const UserLoginBlock = () => {
+  const dispatch = useDispatch();
+  const [email, setEmail] = React.useState('');
+  const [pass, setPass] = React.useState('');
+  const navigate = useNavigate();
+
+  const handleLogin = (email, password) => {
+    const auth = getAuth();
+    console.log(auth, 'auf')
+    signInWithEmailAndPassword(auth, email, password)
+    .then(({ user }) => {
+      dispatch(
+        setUser({
+          email: user.email,
+          id: user.uid,
+          token: user.accessToken,
+        }),
+      );
+      navigate('/account');
+    })
+    .catch(() => alert('Пользователь не найден'));
+  };
+
   return (
     <div className={styles.userBlock}>
       <div className={styles.leftBlock}>
@@ -19,19 +45,28 @@ const UserLoginBlock = () => {
           <h1 className={styles.userLogo}>My Favourite Pets</h1>
           <div className={styles.row}>
             <div className={styles.formGroup}>
-              <input type="text" id="name" placeholder="Имя пользователя" />
-              <input type="current-passowrd" id="password" placeholder="Пароль" />
-              <input className={styles.btnForm} type="submit" value="Войти" />
-              <a href="#" />
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Введите email"
+              />
+              <input
+                type="passowrd"
+                value={pass}
+                onChange={(e) => setPass(e.target.value)}
+                placeholder="Пароль"
+              />
+              <button onClick={() => handleLogin(email, pass)} className={styles.btnForm} type="submit">Войти</button>
             </div>
           </div>
           <div className={styles.enterBlock}>
-            <a  href="https://vk.com" target="blank">
+            <a href="https://vk.com" target="blank">
               <img className={styles.iconVk} src="img/icons/icon-vk.png" alt="icon_vk" />
               Войти через Вконтакте
             </a>
             <p>ИЛИ</p>
-            <Link to='/registration' className={styles.registration}>
+            <Link to="/registration" className={styles.registration}>
               Зарегистрируйтесь
             </Link>
             <p className={styles.enterBlockP}>Скачать наше приложение можно</p>
