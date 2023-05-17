@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 
 import styles from './Registration.module.scss';
@@ -8,13 +8,14 @@ import { setUser } from 'redux/slices/userSlice';
 
 const RegistrationBlock = () => {
   const dispatch = useDispatch();
-  const [email, setEmail] = React.useState('');
-  const [pass, setPass] = React.useState('');
   const navigate = useNavigate();
+  const [email, setEmail] = React.useState('');
+  const [name, setName] = React.useState('');
+  const [pass, setPass] = React.useState('');
 
-  const handleRegister = (email, password) => {
+  const handleRegister = (email, name, password) => {
     const auth = getAuth();
-    console.log(auth, 'auth');
+
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         console.log(user, 'us');
@@ -44,8 +45,9 @@ const RegistrationBlock = () => {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Моб.телефон или почта"
           />
-          <input type="text" placeholder="Имя и фамилия" />
-          <input type="text" placeholder="Имя пользователя" />
+          <input  type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)} placeholder="Имя пользователя" />
           <input
             type="passowrd"
             value={pass}
@@ -53,7 +55,7 @@ const RegistrationBlock = () => {
             placeholder="Пароль"
           />
           <button
-            onClick={() => handleRegister(email, pass)}
+            onClick={() => handleRegister(email, name, pass)}
             className={styles.btnForm}
             type="submit"
           >

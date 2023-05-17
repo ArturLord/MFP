@@ -12,9 +12,9 @@ const Login = () => {
     <div className="wrapper">
       {/* <PicturesSlide /> */}
       <UserLoginBlock />
-      <Shelf />
-      <Footer />
     </div>
+    <Shelf />
+    <Footer />
    </>
   );
 };

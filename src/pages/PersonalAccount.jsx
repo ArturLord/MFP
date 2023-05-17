@@ -21,19 +21,11 @@ const PersonalAccount = () => {
   const { isAuth, email } = useAuth();
   const navigate = useNavigate();
 
-  // const loader = async () => {
-  //   const user = await getUser();
-  //   if (!user) {
-  //     return redirect('/login');
-  //   }
-  //   return null;
-  // }
-
   return (
     <>
       {isAuth ? (
         <>
-          <Header />
+          <Header user={user} />
           <ModalEditBlock
             visibleModalEdit={visibleModalEdit}
             closeModal={() => setVisibleModalEdit(false)}

@@ -6,7 +6,7 @@ import UserBadge from '../UserBadge';
 import { removeUser } from 'redux/slices/userSlice';
 import { useDispatch } from 'react-redux';
 
-const Header = ({ nickName, avatarUrl }) => {
+const Header = ({ nickName, avatarUrl, user }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const locationPage = location.pathname !== '/' && location.pathname !== '/registration';
@@ -32,11 +32,12 @@ const Header = ({ nickName, avatarUrl }) => {
               <a href="#">&#128386;</a>
               <Link to="/posts">&#10084;</Link>
             </div>
-            <UserBadge
-              nickName="Artur"
-              avatarUrl="img/icons/vk-icon.png"
+            {user.filter(obj => obj.id === 1).map(obj => <UserBadge
+            key={obj.id}
+             {...obj}
               onClickButton={onClickButton}
-            />
+              setDownBlock={setDownBlock}
+            />)}
             {downBlock && (
               <div onClick={onClickCloseButton} className={styles.downContent}>
                 <Link to="/account">
