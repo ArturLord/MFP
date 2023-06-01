@@ -1,11 +1,11 @@
-import { makeRequest } from './makeRequest';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const URL = '/posts';
-
-export const getPhotos = (config) =>
-  makeRequest({
-    method: 'GET',
-    url: URL,
-  
-    ...config,
-  });
+export const fetchPhotos = createAsyncThunk(
+  'photos/fetchPhotosStatus',
+  async () => {
+    const { data } = await axios.get('http://localhost:3000/posts'
+    );
+    return data;
+  },
+);

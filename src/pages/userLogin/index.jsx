@@ -13,7 +13,7 @@ const UserLoginBlock = () => {
   const [pass, setPass] = React.useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (email, password) => {
+  const handleLogin = (email, password ) => {
     const auth = getAuth();
     console.log(auth, 'auf')
     signInWithEmailAndPassword(auth, email, password)
@@ -34,10 +34,9 @@ const UserLoginBlock = () => {
     <div className={styles.userBlock}>
       <div className={styles.leftBlock}>
         <div className={styles.picturesSlide}>
-          <img src="img/pictures-slide/cat.jpg" alt="cat" />
-          <img src="img/pictures-slide/dog.jpg" alt="dog" />
-          <img src="img/pictures-slide/hare.jpg" alt="hare" />
-          <img src="img/pictures-slide/fox.jpg" alt="fox" />
+          <img src="img/pictures-slide/lion.png" alt="cat" />
+          <img src="img/pictures-slide/dog.png" alt="dog" />
+          <img src="img/pictures-slide/animal.png" alt="fox" />
         </div>
       </div>
       <div className={styles.rightBlock}>

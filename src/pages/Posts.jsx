@@ -8,8 +8,7 @@ import PostsBlock from '../components/Posts';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from '../components/Loader';
 
-const Posts = ({ photos, isLoading, nextPage, photosTotal }) => {
-
+const Posts = ({ photos, isLoading, nextPage, photosTotal, user }) => {
   return (
     <>
       <Header />
@@ -32,17 +31,16 @@ const Posts = ({ photos, isLoading, nextPage, photosTotal }) => {
                 avatarUrl={author.avatarUrl}
                 userId={author.id}
                 imgUrl={imgUrl}
-                likes={likes.length}
-                isLiked={true}
+                likes={true}
+                isLikedByYou={likes.includes(user[0])}
                 comments={comments}
               />
             ))}
           </InfiniteScroll>
         )}
-
-        <Shelf />
-        <Footer />
       </div>
+      <Shelf />
+      <Footer />
     </>
   );
 };

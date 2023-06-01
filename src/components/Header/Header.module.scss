@@ -27,23 +27,20 @@
   // font-size: 30px;
   min-width: 650px;
 
-  div {
+  .rightPath {
     display: flex;
     align-items: center;
     cursor: pointer;
-    margin-right: 40px;
+    margin-right: 80px;
     font-size: 22px;
 
-    .iconsBlock {
-      margin-right: 20px;
-      
+    .iconsBlock {      
       a {
-        margin-right: 20px;
+        margin-right: 30px;
         font-size: 30px;
       }
     }
     a {
-      // margin-right: 30px;
       color: #1f1f21;
       content: '\1F582';
       transition: color 0.2s linear;
@@ -91,3 +88,5 @@
     }
   }
 }
+
+

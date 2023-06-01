@@ -6,7 +6,7 @@ import UserBadge from '../UserBadge';
 import { removeUser } from 'redux/slices/userSlice';
 import { useDispatch } from 'react-redux';
 
-const Header = ({ nickName, avatarUrl, user }) => {
+const Header = ({ user }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const locationPage = location.pathname !== '/' && location.pathname !== '/registration';
@@ -27,26 +27,27 @@ const Header = ({ nickName, avatarUrl, user }) => {
       {locationPage && (
         <div className={styles.rightBlock}>
           <input className={styles.search} type="search" placeholder="Поиск" />
-          <div>
+          <div className={styles.rightPath}>
             <div className={styles.iconsBlock}>
-              <a href="#">&#128386;</a>
+              <Link to="/messages">&#128386;</Link>
               <Link to="/posts">&#10084;</Link>
             </div>
-            {user.filter(obj => obj.id === 1).map(obj => <UserBadge
-            key={obj.id}
-             {...obj}
+            <UserBadge
+              nickname='ezhic_x'
+              avatarUrl='https://sun9-69.userapi.com/impf/c849220/v849220565/3a09b/kmYiLjBKaeU.jpg?size=320x400&quality=96&sign=381bad4b0f64aacfc67d4f34a1f3199a&c_uniq_tag=iLToh-14w7RCw3xNSCDGzxiT0tYWVYgup24kmpg4eyQ&type=album'
+              
               onClickButton={onClickButton}
               setDownBlock={setDownBlock}
-            />)}
+            />
             {downBlock && (
               <div onClick={onClickCloseButton} className={styles.downContent}>
                 <Link to="/account">
                   <span>Профиль</span>
                 </Link>
-                <Link>
+                <Link to='/settings'>
                   <span>Настройки</span>
                 </Link>
-                <Link>
+                <Link to='/settings/help'>
                   <span>Помощь</span>
                 </Link>
                 <Link>

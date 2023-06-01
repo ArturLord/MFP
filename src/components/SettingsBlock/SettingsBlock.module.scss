@@ -1,0 +1,38 @@
+.content {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: 0 auto;
+
+    .leftBlock {
+        width: 330px;
+        height: 363px;
+        border-radius: 10px;
+        background-color:rgb(189, 224, 255);
+
+        ul {
+            li {
+                cursor: pointer;
+                font-size: 19px;
+                padding: 15px;
+                border-bottom: 1px solid #000;
+
+                &:last-child{
+                    border-bottom: none;
+                   }
+
+                   &:hover {
+                    color:rgb(255, 255, 255);
+                    transition: 0.3s ease-in-out;
+                   }
+            }
+        }
+    }
+
+    .rightBlock {
+        width: 610px;
+        min-height: 470px;
+        border-radius: 10px;
+        background: radial-gradient(circle, rgb(196, 240, 170) 0%, rgb(164, 221, 245) 100%);
+    }
+}

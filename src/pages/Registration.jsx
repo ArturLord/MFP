@@ -11,9 +11,9 @@ const Registration = () => {
       <Header />
       <div className="wrapper">
         <RegistrationBlock />
-        <Shelf />
-        <Footer />
       </div>
+      <Shelf />
+      <Footer />
     </>
   );
 };

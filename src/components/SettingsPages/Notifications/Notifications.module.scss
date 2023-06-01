@@ -1,0 +1,36 @@
+.root {
+    width: 85%;
+    height: 100%;
+    margin: 0 auto;
+
+        .contentPrivacy {
+            border-bottom: 1px dashed #848383;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            h2 {
+                padding-top: 20px;
+                margin-bottom: 15px;
+                font-weight: 400;
+            }
+
+            input {
+                width: 22px;
+                height: 16px;
+                margin-right: 10px;
+            }
+
+            h4 {
+                margin-bottom: 10px;
+            }
+
+            p {
+                margin-top: 10px;
+                margin-bottom: 30px;
+                opacity: 0.6;
+            }
+        }
+    
+}

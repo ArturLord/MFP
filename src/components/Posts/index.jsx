@@ -4,6 +4,7 @@ import styles from './Posts.module.scss';
 
 import UserBadge from '../UserBadge';
 import Comment from '../Comment';
+import PhotoModal from 'components/PhotoModal';
 
 const Posts = ({
   userName,
@@ -14,9 +15,11 @@ const Posts = ({
   isLiked,
   comments,
   isLikeByYou,
+  onLikeClick,
   id,
 }) => {
   const [commentShow, setCommentShow] = React.useState(false);
+  const [isModalVisible, setIsModalVisible] = React.useState(false);
 
   const renderComments = () => {
     if (comments.length > 2 && !commentShow) {
@@ -43,16 +46,27 @@ const Posts = ({
       <div className={styles.postsHeader}>
         <UserBadge nickName={userName} avatarUrl={avatarUrl} id={userId} />
       </div>
-      <div>
+      <div onClick={() => setIsModalVisible(true)}>
         <img className={styles.postsImg} src={imgUrl} alt="img" />
       </div>
       <div className={styles.postsButton}>
-        <i className={`${isLikeByYou ? 'fas' : 'far'} fa-heart ${styles.likesIcon}`} />
+        <i
+          onClick={() => onLikeClick(userId, id)}
+          className={`${isLikeByYou ? 'fas' : 'far'} fa-heart ${styles.likesIcon}`}
+        />
         <i className="fas fa-comment" />
       </div>
-      <div className={styles.postsLike}>Оценили {likes} человек</div>
+      <div className={styles.postsLike}>Оценили {likes} человек</div> 
       <div className={styles.postsComments}>{renderComments()}</div>
       <textarea className={styles.postsText} />
+      <PhotoModal
+        isOpen={isModalVisible}
+        onClose={() => setIsModalVisible(false)}
+        comments={comments}
+        nickname={userName}
+        avatarUrl={avatarUrl}
+        imgUrl={imgUrl}
+      />
     </div>
   );
 };

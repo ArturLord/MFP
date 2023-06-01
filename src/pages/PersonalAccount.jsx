@@ -9,16 +9,13 @@ import PhotoBlock from '../components/PhotoBlock';
 import { AppContext } from '../App';
 import ModalEditBlock from '../components/ModalEditBlock';
 
-import { redirect, useNavigate } from 'react-router-dom';
-import { getUser } from 'api/users';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'hooks/useAuth';
-import { useDispatch } from 'react-redux';
 
-const PersonalAccount = () => {
-  const dispatch = useDispatch();
+const PersonalAccount = ({photos}) => {
   const { user } = React.useContext(AppContext);
   const { visibleModalEdit, setVisibleModalEdit } = React.useContext(AppContext);
-  const { isAuth, email } = useAuth();
+  const { isAuth } = useAuth();
   const navigate = useNavigate();
 
   return (
@@ -41,7 +38,7 @@ const PersonalAccount = () => {
                   setVisibleModalEdit={setVisibleModalEdit}
                 />
               ))}
-            <PhotoBlock />
+            <PhotoBlock  photos={photos} />
             <Shelf />
             <Footer />
           </div>

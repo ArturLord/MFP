@@ -32,9 +32,9 @@ const ProfilBlock = ({nickname, avatarUrl, lastName, firstName, description, url
             <button ref={editRef} onClick={openModal} className={styles.editBtn}>Редактировать профиль</button>
          </div>
           <div className={styles.lowBlock}>
-            <span>0 публикаций</span>
-            <span>0 подписчиков</span>
-            <span>0 подписки</span>
+            <span>14 публикаций</span>
+            <span>535к подписчиков</span>
+            <span>7 подписок</span>
           </div>
           <div className={styles.lowRow}>
             <span>{firstName} {lastName}</span>

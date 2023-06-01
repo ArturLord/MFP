@@ -8,16 +8,16 @@ const ModalEditBlock = ({ visibleModalEdit, closeModal }) => {
     <div className={visibleModalEdit ? styles.modalVisible : styles.modal}>
       <div className={styles.modalDialog}>
         <div className={styles.modalContent}>
-          <Link>
+          <Link to='/settings/password'>
             <span>Сменить пароль</span>
           </Link>
-          <Link>
+          <Link to='/settings/privacy&security'>
             <span>Конфинденциальность и безопасность</span>
           </Link>
-          <Link>
+          <Link to='/settings/notifications'>
             <span>Уведомления</span>
           </Link>
-          <Link>
+          <Link to='/settings/report&problem'>
             <span>Сообщить о проблеме</span>
           </Link>
           <Link>
