@@ -2,16 +2,16 @@ import React from 'react';
 
 import styles from './PhotoBlock.module.scss';
 import Card from '../Card';
-import { AppContext } from '../../App';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import ProfilBlock from 'components/ProfilBlock';
+import Shelf from '../Hf-shelf';
+import { useSelector } from 'react-redux';
+import Loader from 'components/Loader';
 
-const PhotoBlock = ({ photos }) => {
-  const { photoPost } = React.useContext(AppContext);
-
-  if (!photos) {
-    return <ProfilBlock/>
-  }
+const PhotoBlock = ({postsByUser }) => {
+  const {status} = useSelector(state => state.postsUser)
+  // if (!posts) {
+  //   return <Shelf/>
+  // }
 
   return (
     <>
@@ -25,30 +25,30 @@ const PhotoBlock = ({ photos }) => {
               Фотографии
             </Tab>
             <Tab selectedClassName={styles.activeTab} className={styles.tab}>
-              Видео
+              Отметки
             </Tab>
             <Tab selectedClassName={styles.activeTab} className={styles.tab}>
-              Shorts
+              Закладки
             </Tab>
           </TabList>
 
           <TabPanel>
             <div className={styles.contentPhoto}>
-              {photoPost?.map(({ author, imgUrl, comments, id }) => (
-                <Card
-                  key={id}
-                  userName={author.nickname}
-                  comments={comments}
-                  avatarUrl={author.avatarUrl}
-                  imgUrl={imgUrl}
-                />
-              ))}
+            {status === 'loading' ? <Loader/> : postsByUser?.map(({ author, imgUrl, comments, id }) => (
+                    <Card
+                      key={id}
+                      userName={author.nickname}
+                      comments={comments}
+                      avatarUrl={author.avatarUrl}
+                      imgUrl={imgUrl}
+                    />
+                  ))}
             </div>
           </TabPanel>
           <TabPanel>
             <div className={styles.contentPhoto}>
 
-                  {photos?.map(({ author, imgUrl, comments, id }) => (
+                  {status === 'loading' ? <Loader/> : postsByUser?.map(({ author, imgUrl, comments, id }) => (
                     <Card
                       key={id}
                       userName={author.nickname}

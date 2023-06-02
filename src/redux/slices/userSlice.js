@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchUsers } from 'api/users';
+import { Status } from './postsSlice';
 
 const initialState = {
+  users: [],
+  status: Status.LOADING,
   name: null,
   email: null,
   token: null,
@@ -11,6 +15,10 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    setUsersPages(state, action) {
+      state.users = action.payload;
+    },
+
     setUser(state, action) {
       state.name = action.payload.name;
       state.email = action.payload.email;
@@ -25,8 +33,23 @@ const userSlice = createSlice({
       state.id = null;
     },
   },
+
+  extraReducers: (builder) => {
+    builder.addCase(fetchUsers.pending, (state) => {
+      state.status = Status.LOADING;
+      state.users = [];
+    });
+    builder.addCase(fetchUsers.fulfilled, (state, action) => {
+      state.users = action.payload;
+      state.status = Status.SUCCESS;
+    });
+    builder.addCase(fetchUsers.rejected, (state) => {
+      state.status = Status.ERROR;
+      state.users = [];
+    });
+  },
 });
 
-export const { setUser, removeUser} = userSlice.actions;
+export const { setUser, setUsersPages, removeUser } = userSlice.actions;
 
 export default userSlice.reducer;

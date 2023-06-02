@@ -18,7 +18,6 @@ const RegistrationBlock = () => {
 
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        console.log(user, 'us');
         dispatch(
           setUser({
             email: user.email,

@@ -15,7 +15,6 @@ const UserLoginBlock = () => {
 
   const handleLogin = (email, password ) => {
     const auth = getAuth();
-    console.log(auth, 'auf')
     signInWithEmailAndPassword(auth, email, password)
     .then(({ user }) => {
       dispatch(

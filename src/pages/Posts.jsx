@@ -7,23 +7,40 @@ import PostsBlock from '../components/Posts';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from '../components/Loader';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPosts } from 'api/posts';
+import { setCurrentPage } from 'redux/slices/postsSlice';
 
-const Posts = ({ photos, isLoading, nextPage, photosTotal, user }) => {
+const Posts = () => {
+
+  const dispatch = useDispatch();
+  const {posts, currentPage, status} = useSelector(state => state.posts);
+  const [photosTotal, setPhotosTotal] = React.useState(0);
+
+  const nextPage = () => {
+    dispatch(setCurrentPage(currentPage + 1));
+  };
+
+  React.useEffect(() => {
+    dispatch(fetchPosts({currentPage}))
+   
+  }, [currentPage])
+
   return (
     <>
       <Header />
       <div className="wrapper">
-        {isLoading ? (
+        {status === 'loading' ? (
           <Loader />
         ) : (
           <InfiniteScroll
-            dataLength={photos ? photos.length : 0}
+            dataLength={posts}
             next={nextPage}
-            hasMore={photos.length < photosTotal}
+            hasMore={posts.length < photosTotal}
             loader={<Loader />}
             endMessage={<p>Вы пролистали все посты</p>}
           >
-            {photos.map(({ author, imgUrl, id, likes, comments }) => (
+            {posts.map(({ author, imgUrl, id, likes, comments }) => (
               <PostsBlock
                 key={id}
                 id={id}
@@ -32,7 +49,7 @@ const Posts = ({ photos, isLoading, nextPage, photosTotal, user }) => {
                 userId={author.id}
                 imgUrl={imgUrl}
                 likes={true}
-                isLikedByYou={likes.includes(user[0])}
+                isLikedByYou={true}
                 comments={comments}
               />
             ))}

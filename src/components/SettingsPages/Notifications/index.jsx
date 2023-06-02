@@ -10,15 +10,15 @@ const Notifications = () => {
          <div style={{display: 'flex', flexDirection: 'column'}}>
         <div style={{marginBottom: '7px'}}>
         <input type="radio"  name="scales" />
-          <label for="scales">От всех</label>
+          <label htmlFor="scales">От всех</label>
         </div>
       <div style={{marginBottom: '7px'}}>
       <input type="radio"  name="scales" />
-          <label for="scales">От людей, на которых вы подписаны</label>
+          <label htmlFor="scales">От людей, на которых вы подписаны</label>
       </div>
       <div>
       <input type="radio"  name="scales" />
-          <label for="scales">Выкл</label>
+          <label htmlFor="scales">Выкл</label>
       </div>
          </div>
          <p>kotopes нравится ваше фото</p>
@@ -28,15 +28,15 @@ const Notifications = () => {
          <div style={{display: 'flex', flexDirection: 'column'}}>
         <div style={{marginBottom: '7px'}}>
         <input type="radio"  name="scales" />
-          <label for="scales">От всех</label>
+          <label htmlFor="scales">От всех</label>
         </div>
       <div style={{marginBottom: '7px'}}>
       <input type="radio"  name="scales" />
-          <label for="scales">От людей, на которых вы подписаны</label>
+          <label htmlFor="scales">От людей, на которых вы подписаны</label>
       </div>
       <div>
       <input type="radio"  name="scales" />
-          <label for="scales">Выкл</label>
+          <label htmlFor="scales">Выкл</label>
       </div>
          </div>
          <p>kotopes прокомментировал ваше фото</p>
@@ -46,11 +46,11 @@ const Notifications = () => {
          <div style={{display: 'flex', flexDirection: 'column'}}>
         <div style={{marginBottom: '7px'}}>
         <input type="radio"  name="scales" />
-          <label for="scales">От всех</label>
+          <label htmlFor="scales">От всех</label>
         </div>
       <div>
       <input type="radio"  name="scales" />
-          <label for="scales">Выкл</label>
+          <label htmlFor="scales">Выкл</label>
       </div>
          </div>
          <p>У Вас есть непрочитанные уведомления</p>
@@ -60,11 +60,11 @@ const Notifications = () => {
          <div style={{display: 'flex', flexDirection: 'column'}}>
         <div style={{marginBottom: '7px'}}>
         <input type="radio"  name="scales" />
-          <label for="scales">От всех</label>
+          <label htmlFor="scales">От всех</label>
         </div>
       <div>
       <input type="radio"  name="scales" />
-          <label for="scales">Выкл</label>
+          <label htmlFor="scales">Выкл</label>
       </div>
          </div>
          <p>kotopes принял(а) ваш запрос на подписку</p>
@@ -74,11 +74,11 @@ const Notifications = () => {
          <div style={{display: 'flex', flexDirection: 'column'}}>
         <div style={{marginBottom: '7px'}}>
         <input type="radio"  name="scales" />
-          <label for="scales">Вкл</label>
+          <label htmlFor="scales">Вкл</label>
         </div>
       <div>
       <input type="radio"  name="scales" />
-          <label for="scales">Выкл</label>
+          <label htmlFor="scales">Выкл</label>
       </div>
          </div>
          <p>Ваш запрос на поддржку был обновлен</p>

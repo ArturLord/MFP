@@ -35,8 +35,8 @@ const PhotoModal = ({ isOpen, onClose, imgUrl, comments, nickname, avatarUrl }) 
           </div>
 
           <div className={styles.modalComments}>
-            {comments.map((comment) => (
-              <Comment {...comment}/>
+            {comments.map((comment, i) => (
+              <Comment key={i} {...comment}/>
             ))}
           </div>
           </div>

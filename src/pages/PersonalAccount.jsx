@@ -1,34 +1,51 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Shelf from '../components/Hf-shelf';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import ProfilBlock from '../components/ProfilBlock';
 import PhotoBlock from '../components/PhotoBlock';
-
-import { AppContext } from '../App';
 import ModalEditBlock from '../components/ModalEditBlock';
 
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'hooks/useAuth';
+import { fetchUsers } from 'api/users';
+import { fetchPostByUser } from 'api/postByUser';
+import { fetchPosts } from 'api/posts';
 
-const PersonalAccount = ({photos}) => {
-  const { user } = React.useContext(AppContext);
-  const { visibleModalEdit, setVisibleModalEdit } = React.useContext(AppContext);
-  const { isAuth } = useAuth();
+const PersonalAccount = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { isAuth } = useAuth();
+  const { users } = useSelector((state) => state.user);
+  const { posts } = useSelector((state) => state.posts);
+  const { postsByUser } = useSelector((state) => state.postsUser);
+  const [visibleModalEdit, setVisibleModalEdit] = React.useState(false);
+
+  React.useEffect(() => {
+    dispatch(fetchUsers());
+  }, []);
+
+  React.useEffect(() => {
+    dispatch(fetchPostByUser());
+  }, []);
+
+  React.useEffect(() => {
+    dispatch(fetchPosts());
+  }, []);
 
   return (
     <>
       {isAuth ? (
         <>
-          <Header user={user} />
+          <Header />
           <ModalEditBlock
             visibleModalEdit={visibleModalEdit}
             closeModal={() => setVisibleModalEdit(false)}
           />
           <div className="wrapper">
-            {user
+            {users
               ?.filter((obj) => obj.id === 1)
               .map((obj) => (
                 <ProfilBlock
@@ -38,13 +55,13 @@ const PersonalAccount = ({photos}) => {
                   setVisibleModalEdit={setVisibleModalEdit}
                 />
               ))}
-            <PhotoBlock  photos={photos} />
+            <PhotoBlock postsByUser={postsByUser} posts={posts} />
             <Shelf />
             <Footer />
           </div>
         </>
       ) : (
-         navigate('/')
+        navigate('/')
       )}
     </>
   );
