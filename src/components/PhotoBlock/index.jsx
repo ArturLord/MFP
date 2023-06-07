@@ -9,9 +9,12 @@ import Loader from 'components/Loader';
 
 const PhotoBlock = ({postsByUser }) => {
   const {status} = useSelector(state => state.postsUser)
-  // if (!posts) {
-  //   return <Shelf/>
-  // }
+ 
+  if (status === 'error') {
+   setTimeout(() => {
+    return alert('Произошла ошибка при получении фотографий')
+   }, 2000);
+  }
 
   return (
     <>

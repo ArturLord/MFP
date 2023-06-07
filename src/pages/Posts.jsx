@@ -9,51 +9,57 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from '../components/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from 'api/posts';
-import { setCurrentPage } from 'redux/slices/postsSlice';
+import { setCurrentPage, setPosts } from 'redux/slices/postsSlice';
 
 const Posts = () => {
-
   const dispatch = useDispatch();
-  const {posts, currentPage, status} = useSelector(state => state.posts);
+  const { posts, currentPage, status } = useSelector((state) => state.posts);
   const [photosTotal, setPhotosTotal] = React.useState(0);
+
+  // console.log(posts, 'pos')
 
   const nextPage = () => {
     dispatch(setCurrentPage(currentPage + 1));
   };
 
   React.useEffect(() => {
-    dispatch(fetchPosts({currentPage}))
-   
-  }, [currentPage])
+    dispatch(fetchPosts({ currentPage, setPhotosTotal, posts, status, setPosts }));
+  }, [currentPage]);
 
   return (
     <>
       <Header />
       <div className="wrapper">
-        {status === 'loading' ? (
-          <Loader />
+        {status === 'error' ? (
+          <h2>Произошла ошибка</h2>
         ) : (
-          <InfiniteScroll
-            dataLength={posts}
-            next={nextPage}
-            hasMore={posts.length < photosTotal}
-            loader={<Loader />}
-            endMessage={<p>Вы пролистали все посты</p>}
-          >
-            {posts.map(({ author, imgUrl, id, likes, comments }) => (
-              <PostsBlock
-                key={id}
-                id={id}
-                userName={author.nickname}
-                avatarUrl={author.avatarUrl}
-                userId={author.id}
-                imgUrl={imgUrl}
-                likes={true}
-                isLikedByYou={true}
-                comments={comments}
-              />
-            ))}
-          </InfiniteScroll>
+          <div>
+            {status === 'loading' ? (
+              <Loader />
+            ) : (
+              <InfiniteScroll
+                dataLength={posts ? posts.length : 0}
+                next={nextPage}
+                hasMore={posts.length < photosTotal}
+                loader={<Loader />}
+                endMessage={<p>Вы пролистали все посты</p>}
+              >
+                {posts.map(({ author, imgUrl, id, likes, comments }) => (
+                  <PostsBlock
+                    key={id}
+                    id={id}
+                    userName={author.nickname}
+                    avatarUrl={author.avatarUrl}
+                    userId={author.id}
+                    imgUrl={imgUrl}
+                    likes={true}
+                    isLikedByYou={true}
+                    comments={comments}
+                  />
+                ))}
+              </InfiniteScroll>
+            )}
+          </div>
         )}
       </div>
       <Shelf />

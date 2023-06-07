@@ -16,24 +16,24 @@ export const AppContext = React.createContext();
 function App() {
   // photos
   // React.useEffect(() => {
-  //   async function postsData() {
-  //     try {
-  //       const prevPhotos = photos;
-  //       const { data, headers } = await api.photos.getPhotos({
-  //         params: {
-  //           _page: page,
-  //           _limit: 5,
-  //         },
-  //       });
-  //       if (page === 1) {
-  //         setPhotosTotal(headers['x-total-count']);
-  //         setPhotos([...data]);
-  //         setIsLoading(false);
-  //       } else {
-  //         setPhotosTotal(headers['x-total-count']);
-  //         setPhotos([...prevPhotos, ...data]);
+    // async function postsData() {
+    //   try {
+    //     const prevPhotos = photos;
+    //     const { data, headers } = await api.photos.getPhotos({
+    //       params: {
+    //         _page: page,
+    //         _limit: 5,
+    //       },
+    //     });
+    //     if (page === 1) {
+    //       setPhotosTotal(headers['x-total-count']);
+    //       setPhotos([...data]);
+    //       setIsLoading(false);
+    //     } else {
+    //       setPhotosTotal(headers['x-total-count']);
+    //       setPhotos([...prevPhotos, ...data]);
 
-  //       }
+    //     }
 
   //     } catch (error) {
   //       alert('Произошла ошибка при получении постов');
