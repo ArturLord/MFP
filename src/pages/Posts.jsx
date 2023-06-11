@@ -16,14 +16,12 @@ const Posts = () => {
   const { posts, currentPage, status } = useSelector((state) => state.posts);
   const [photosTotal, setPhotosTotal] = React.useState(0);
 
-  // console.log(posts, 'pos')
-
   const nextPage = () => {
     dispatch(setCurrentPage(currentPage + 1));
   };
 
   React.useEffect(() => {
-    dispatch(fetchPosts({ currentPage, setPhotosTotal, posts, status, setPosts }));
+    dispatch(fetchPosts({ currentPage, setPhotosTotal, posts }));
   }, [currentPage]);
 
   return (
@@ -52,8 +50,8 @@ const Posts = () => {
                     avatarUrl={author.avatarUrl}
                     userId={author.id}
                     imgUrl={imgUrl}
-                    likes={true}
-                    isLikedByYou={true}
+                    likes={likes.length}
+                    isLikedByYou={likes.includes(author.id)}
                     comments={comments}
                   />
                 ))}

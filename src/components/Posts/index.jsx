@@ -12,14 +12,17 @@ const Posts = ({
   userId,
   imgUrl,
   likes,
-  isLiked,
   comments,
-  isLikeByYou,
-  onLikeClick,
-  id,
+  isLikedByYou
 }) => {
   const [commentShow, setCommentShow] = React.useState(false);
   const [isModalVisible, setIsModalVisible] = React.useState(false);
+  const [isLiked, setIsLiked] = React.useState(false);
+
+  //?
+ const isLikedClick = () => {
+  setIsLiked(!isLiked);
+ }
 
   const renderComments = () => {
     if (comments.length > 2 && !commentShow) {
@@ -44,17 +47,18 @@ const Posts = ({
   return (
     <div className={styles.fullPosts}>
       <div className={styles.postsHeader}>
-        <UserBadge nickName={userName} avatarUrl={avatarUrl} id={userId} />
+        <UserBadge nickname={userName} avatarUrl={avatarUrl} id={userId} />
       </div>
       <div onClick={() => setIsModalVisible(true)}>
         <img className={styles.postsImg} src={imgUrl} alt="img" />
       </div>
       <div className={styles.postsButton}>
-        <i
-          onClick={() => onLikeClick(userId, id)}
-          className={`${isLikeByYou ? 'fas' : 'far'} fa-heart ${styles.likesIcon}`}
+        <img
+        onClick={isLikedClick}
+          src={isLikedByYou ? 'img/icons/liked.png' : 'img/icons/noliked.png'}
+          className={styles.likesIcon}
         />
-        <i className="fas fa-comment" />
+        <img src='img/icons/comment.png' />
       </div>
       <div className={styles.postsLike}>Оценили {likes} человек</div> 
       <div className={styles.postsComments}>{renderComments()}</div>

@@ -29,6 +29,11 @@
     display: flex;
     padding: 10px;
     cursor: pointer;
+
+    img {
+        width: 26px;
+        height: 26px;
+    }
 }
 
 .postsLike {
