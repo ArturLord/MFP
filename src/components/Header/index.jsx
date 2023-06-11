@@ -44,8 +44,8 @@ const Header = () => {
           <input className={styles.search} type="search" placeholder="Поиск" />
           <div className={styles.rightPath}>
             <div className={styles.iconsBlock}>
-              <Link to="/messages">&#128386;</Link>
-              <Link to="/posts">&#10084;</Link>
+              <Link to="/messages"><img src='img/icons/message.png' alt='message'/></Link>
+              <Link to="/posts"><img src='img/icons/post.png' alt='post'/></Link>
             </div>
             <div ref={userPopupRef} className={styles.userBadgeHeader}>
               <UserBadge
@@ -66,8 +66,8 @@ const Header = () => {
                 <Link to="/settings/help">
                   <span>Помощь</span>
                 </Link>
-                <Link>
-                  <span onClick={() => dispatch(removeUser())}>Выйти из аккаунта</span>
+                <Link  to="/">
+                  <span >Выйти из аккаунта</span>
                 </Link>
               </div>
             )}

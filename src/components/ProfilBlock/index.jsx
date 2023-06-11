@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './ProfilBlock.module.scss';
 
-const ProfilBlock = ({nickname, avatarUrl, lastName, firstName, description, url, openModal, setVisibleModalEdit}) => {
+const ProfilBlock = ({nickname, avatarUrl, posts, subscribers, subscribed,  lastName, firstName, description, url, openModal, setVisibleModalEdit}) => {
 
   const editRef = React.useRef();
 
@@ -32,9 +32,9 @@ const ProfilBlock = ({nickname, avatarUrl, lastName, firstName, description, url
             <button ref={editRef} onClick={openModal} className={styles.editBtn}>Редактировать профиль</button>
          </div>
           <div className={styles.lowBlock}>
-            <span>14 публикаций</span>
-            <span>535к подписчиков</span>
-            <span>7 подписок</span>
+            <span>{posts.length} публикаций</span>
+            <span>{subscribers.length} подписчиков</span>
+            <span>{subscribed.length} подписок</span>
           </div>
           <div className={styles.lowRow}>
             <span>{firstName} {lastName}</span>

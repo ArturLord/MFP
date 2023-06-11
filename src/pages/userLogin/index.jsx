@@ -6,6 +6,7 @@ import { setUser } from 'redux/slices/userSlice';
 
 import styles from './userLogin.module.scss';
 import { useDispatch } from 'react-redux';
+import FormUser from 'components/FormUser';
 
 const UserLoginBlock = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,12 @@ const UserLoginBlock = () => {
     .catch(() => alert('Пользователь не найден'));
   };
 
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    console.log('form submitted ✅');
+  };
+
   return (
     <div className={styles.userBlock}>
       <div className={styles.leftBlock}>
@@ -42,21 +49,12 @@ const UserLoginBlock = () => {
         <div className={styles.userLoginBlock}>
           <h1 className={styles.userLogo}>My Favourite Pets</h1>
           <div className={styles.row}>
+            <form onSubmit={handleSubmit}>
             <div className={styles.formGroup}>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Введите email"
-              />
-              <input
-                type="passowrd"
-                value={pass}
-                onChange={(e) => setPass(e.target.value)}
-                placeholder="Пароль"
-              />
+              <FormUser pass={pass} setPass={setPass} email={email} setEmail={setEmail}/>
               <button onClick={() => handleLogin(email, pass)} className={styles.btnForm} type="submit">Войти</button>
             </div>
+            </form>
           </div>
           <div className={styles.enterBlock}>
             <a href="https://vk.com" target="blank">

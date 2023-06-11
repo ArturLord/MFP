@@ -5,15 +5,15 @@ import { useDispatch } from 'react-redux';
 
 import styles from './Registration.module.scss';
 import { setUser } from 'redux/slices/userSlice';
+import FormUser from 'components/FormUser';
 
 const RegistrationBlock = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = React.useState('');
-  const [name, setName] = React.useState('');
   const [pass, setPass] = React.useState('');
 
-  const handleRegister = (email, name, password) => {
+  const handleRegister = (email, password) => {
     const auth = getAuth();
 
     createUserWithEmailAndPassword(auth, email, password)
@@ -38,23 +38,9 @@ const RegistrationBlock = () => {
       </div>
       <div className={styles.row}>
         <div className={styles.formGroup}>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Моб.телефон или почта"
-          />
-          <input  type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)} placeholder="Имя пользователя" />
-          <input
-            type="passowrd"
-            value={pass}
-            onChange={(e) => setPass(e.target.value)}
-            placeholder="Пароль"
-          />
+         <FormUser pass={pass} setPass={setPass} email={email} setEmail={setEmail}/>
           <button
-            onClick={() => handleRegister(email, name, pass)}
+            onClick={() => handleRegister(email, pass)}
             className={styles.btnForm}
             type="submit"
           >

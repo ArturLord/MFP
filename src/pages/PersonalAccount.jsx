@@ -21,7 +21,10 @@ const PersonalAccount = () => {
   const { users } = useSelector((state) => state.user);
   const { posts } = useSelector((state) => state.posts);
   const { postsByUser } = useSelector((state) => state.postsUser);
+
+  console.log(users, 'ps')
   const [visibleModalEdit, setVisibleModalEdit] = React.useState(false);
+  const isMounted = React.useRef(false);
 
   React.useEffect(() => {
     dispatch(fetchUsers());
@@ -34,6 +37,15 @@ const PersonalAccount = () => {
   React.useEffect(() => {
     dispatch(fetchPosts());
   }, []);
+
+
+  React.useEffect(() => {
+   if (isMounted.current) {
+    const json = JSON.stringify(isAuth);
+    localStorage.setItem('auth', json);
+   }
+   isMounted.current = true;
+  }, [isAuth])
 
   return (
     <>
@@ -53,6 +65,7 @@ const PersonalAccount = () => {
                   {...obj}
                   openModal={() => setVisibleModalEdit(true)}
                   setVisibleModalEdit={setVisibleModalEdit}
+                  posts={postsByUser}
                 />
               ))}
             <PhotoBlock postsByUser={postsByUser} posts={posts} />

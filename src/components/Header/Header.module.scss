@@ -11,21 +11,24 @@
     font-family: 'Dancing Script', cursive;
     font-size: 38px;
   }
-  .search {
-    padding: 18px 45px;
-    margin-right: 40px;
-    border: none;
-    border-radius: 10px;
-    block-size: 27px;
-    text-align: center;
-  }
+
 }
 .rightBlock {
   display: flex;
   justify-content: space-between;
   align-items: center;
   // font-size: 30px;
-  min-width: 650px;
+  min-width: 450px;
+
+  .search {
+    padding: 18px 0px;
+    width: 280px;
+    margin-right: 40px;
+    border: none;
+    border-radius: 10px;
+    block-size: 27px;
+    text-align: center;
+  }
 
   .rightPath {
     display: flex;
@@ -34,24 +37,28 @@
     margin-right: 80px;
     font-size: 22px;
 
-    .iconsBlock {      
+    .userBadgeHeader {
+      display: flex;
+    }
+
+    .iconsBlock { 
+      display: flex;    
+     
       a {
+        width: 32px;
+        height: 32px;
         margin-right: 30px;
         font-size: 30px;
-      }
-    }
-    a {
-      color: #1f1f21;
-      content: '\1F582';
-      transition: color 0.2s linear;
-
-      &:hover {
-        color: rgb(167, 240, 240);
         opacity: 0.9;
+
+        &:hover {
+          opacity: 0.7;
+        }
       }
     }
   }
 }
+
 
 .downContent {
   display: flex;

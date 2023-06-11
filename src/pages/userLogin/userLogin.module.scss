@@ -7,7 +7,7 @@
     width: 55%;
     margin-right: 30px;
     // box-shadow: 0px 0px 25px 3px rgba(0, 0, 0, 0.2);
-    
+
     .picturesSlide {
       position: relative;
       max-width: 100%;
@@ -21,7 +21,7 @@
         opacity: 0;
         animation-name: pictures-slide;
         animation-duration: 12s;
-        transition: 0.5s  ease-in-out;
+        transition: 0.5s ease-in-out;
         animation-iteration-count: infinite;
       }
 
@@ -112,25 +112,6 @@
     }
     .row {
       .formGroup {
-        
-        input {
-          display: block;
-          width: 80%;
-          margin: 0 auto;
-          color: rgb(39, 34, 34);
-          padding: 15px 10px;
-          border: none;
-          border-radius: 2px;
-          padding-left: 5px;
-          margin-bottom: 8px;
-
-
-          &:focus {
-            background-color:#e2f3f9;
-            box-shadow: 0px 0px 25px 3px rgba(46, 46, 46, 0.2);
-
-          }
-        }
         .btnForm {
           width: 80%;
           height: 45px;

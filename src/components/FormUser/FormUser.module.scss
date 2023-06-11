@@ -1,0 +1,40 @@
+.formGroup {
+  input {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    color: rgb(39, 34, 34);
+    padding: 12px 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 2px;
+    padding-left: 5px;
+    margin-bottom: 8px;
+  
+    &::placeholder {
+      font-size: 14px;
+    }
+  
+    &:focus {
+      background-color: #e2f3f9;
+      box-shadow: 0px 0px 25px 3px rgba(46, 46, 46, 0.2);
+    }
+  }
+  
+  .passWrapper {
+    position: relative;
+    display: flex;
+  
+    img {
+      position: absolute;
+      right: 15%;
+      top: 15%;
+      cursor: pointer;
+  
+      &:active {
+        transform: translateY(1px);
+      }
+    }
+  }
+  
+}
