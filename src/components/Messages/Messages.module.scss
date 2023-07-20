@@ -1,12 +1,11 @@
 .container {
-  width: 820px;
-  height: 820px;
-  margin: 0 auto;
-  font-size: 0;
+  display: flex;
+  justify-content: center;
+  height: auto;
 
   .leftBlock {
-    width: 280px;
-    height: 820px;
+    width: 330px;
+    height: 620px;
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
     background-color: #3b3e49;
@@ -44,6 +43,7 @@
       height: 690px;
 
       li {
+        cursor: pointer;
         padding: 10px 0;
 
         &:hover {
@@ -80,8 +80,8 @@
     }
   }
   .rightBlock {
-    width: 540px;
-    height: 820px;
+    width: 680px;
+    height: 620px;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
     background: #eff3f7;
@@ -129,7 +129,7 @@
     margin: 0;
     list-style-type: none;
     overflow-y: scroll;
-    height: 535px;
+    height: 335px;
     border-top: 2px solid #fff;
     border-bottom: 2px solid #fff;
 
@@ -219,6 +219,15 @@
 		// font-weight: bold;
 		color: #ffffff;
 		vertical-align: top;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: lighten(#2eaa9e, 7%);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
 	  }
   }
 }
@@ -240,5 +249,61 @@
 	background-color:  lighten(#60c0fc, 7%);
 	margin-right: 0;
 	
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+
+    .leftBlock {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+
+      header {
+        input {
+          display: block;
+          height: 0;
+          padding: 25px 90px;
+          margin: 0 auto;
+          border-radius: 20px;
+
+          &::placeholder {
+            text-align: center;
+          }
+        }
+      }
+
+      ul {
+        height: auto;
+
+        li {
+
+          img {
+            width: 60px;
+            height: 60px;
+          }
+        }
+      }
+    }
+
+    .rightBlock {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+
+      header {
+        display: flex;
+        height: auto;
+        padding: 20px;
+  
+    }
+    .footer {
+      margin-bottom: 10px;
+    }
+    }
+
+ 
   }
 }

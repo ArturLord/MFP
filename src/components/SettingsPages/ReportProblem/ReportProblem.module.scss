@@ -55,3 +55,23 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .root {
+    .content {
+      h2 {
+        font-size: 15px;
+      }
+
+      input {
+        width: 240px;
+      }
+
+      button {
+        width: 100%;
+        height: 45px;
+        border-radius: 25px;
+      }
+    }
+  }
+}

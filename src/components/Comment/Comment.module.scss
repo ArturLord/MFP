@@ -1,10 +1,31 @@
+.root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .comment {
-    display: flex;
-    align-items: center;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 
 .name {
-    font-size: 14px;
-    font-weight: 500;
-    margin: 0 5px;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 5px;
+}
+
+.delete {
+  font-family: 'Orbitron';
+  cursor: pointer;
+  font-size: 13px;
+  padding: 4px;
+  opacity: 0.1;
+  transition: all 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }

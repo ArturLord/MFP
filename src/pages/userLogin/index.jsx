@@ -32,8 +32,6 @@ const UserLoginBlock = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-
-    console.log('form submitted ✅');
   };
 
   return (

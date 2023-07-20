@@ -3,17 +3,15 @@ import React from 'react';
 import styles from './PhotoBlock.module.scss';
 import Card from '../Card';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Shelf from '../Hf-shelf';
 import { useSelector } from 'react-redux';
-import Loader from 'components/Loader';
 
-const PhotoBlock = ({postsByUser }) => {
-  const {status} = useSelector(state => state.postsUser)
- 
+const PhotoBlock = ({ postsByUser }) => {
+  const { status } = useSelector((state) => state.postsUser);
+
   if (status === 'error') {
-   setTimeout(() => {
-    return alert('Произошла ошибка при получении фотографий')
-   }, 2000);
+    setTimeout(() => {
+      return alert('Произошла ошибка при получении фотографий');
+    }, 2000);
   }
 
   return (
@@ -25,19 +23,21 @@ const PhotoBlock = ({postsByUser }) => {
               selectedClassName={styles.activeTab}
               className={`${styles.tab} ${styles.tabActive}`}
             >
-              Фотографии
+              <img src="img/icons/feed.png" alt="feed" />
             </Tab>
             <Tab selectedClassName={styles.activeTab} className={styles.tab}>
-              Отметки
+              <img src="img/icons/mark.png" alt="mark" />
             </Tab>
             <Tab selectedClassName={styles.activeTab} className={styles.tab}>
-              Закладки
+              <img src="img/icons/bookmark.png" alt="bookmark" />
             </Tab>
           </TabList>
 
           <TabPanel>
             <div className={styles.contentPhoto}>
-            {status === 'loading' ? <Loader/> : postsByUser?.map(({ author, imgUrl, comments, id }) => (
+              {status === 'loading'
+                ? [...Array(4)].map((_) => <div className={styles.rootLoader}></div>)
+                : postsByUser?.map(({ author, imgUrl, comments, id }) => (
                     <Card
                       key={id}
                       userName={author.nickname}
@@ -49,26 +49,10 @@ const PhotoBlock = ({postsByUser }) => {
             </div>
           </TabPanel>
           <TabPanel>
-            <div className={styles.contentPhoto}>
-
-                  {status === 'loading' ? <Loader/> : postsByUser?.map(({ author, imgUrl, comments, id }) => (
-                    <Card
-                      key={id}
-                      userName={author.nickname}
-                      comments={comments}
-                      avatarUrl={author.avatarUrl}
-                      imgUrl={imgUrl}
-                    />
-                  ))}
-            </div>
+            <p className={styles.bookmarks}>Здесь будут показываться ваши отметки</p>
           </TabPanel>
           <TabPanel>
-            <div className={styles.contentPhoto}>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet minima ratione non
-                iste aperiam illum ipsam cumque aliquid, odio hic!
-              </p>
-            </div>
+            <p className={styles.bookmarks}>Здесь будут показываться ваши закладки</p>
           </TabPanel>
         </Tabs>
       </div>

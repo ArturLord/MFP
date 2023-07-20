@@ -17,12 +17,10 @@ import { fetchPosts } from 'api/posts';
 const PersonalAccount = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isAuth } = useAuth();
-  const { users } = useSelector((state) => state.user);
+  const isAuth = useAuth();
   const { posts } = useSelector((state) => state.posts);
+  const { authUser } = useSelector((state) => state.user);
   const { postsByUser } = useSelector((state) => state.postsUser);
-
-  console.log(users, 'ps')
   const [visibleModalEdit, setVisibleModalEdit] = React.useState(false);
   const isMounted = React.useRef(false);
 
@@ -38,14 +36,13 @@ const PersonalAccount = () => {
     dispatch(fetchPosts());
   }, []);
 
-
   React.useEffect(() => {
-   if (isMounted.current) {
-    const json = JSON.stringify(isAuth);
-    localStorage.setItem('auth', json);
-   }
-   isMounted.current = true;
-  }, [isAuth])
+    if (isMounted.current) {
+      const json = JSON.stringify(isAuth);
+      localStorage.setItem('auth', json);
+    }
+    isMounted.current = true;
+  }, [isAuth]);
 
   return (
     <>
@@ -57,17 +54,12 @@ const PersonalAccount = () => {
             closeModal={() => setVisibleModalEdit(false)}
           />
           <div className="wrapper">
-            {users
-              ?.filter((obj) => obj.id === 1)
-              .map((obj) => (
-                <ProfilBlock
-                  key={obj.id}
-                  {...obj}
-                  openModal={() => setVisibleModalEdit(true)}
-                  setVisibleModalEdit={setVisibleModalEdit}
-                  posts={postsByUser}
-                />
-              ))}
+            <ProfilBlock
+              openModal={() => setVisibleModalEdit(true)}
+              setVisibleModalEdit={setVisibleModalEdit}
+              posts={postsByUser}
+            />
+
             <PhotoBlock postsByUser={postsByUser} posts={posts} />
             <Shelf />
             <Footer />

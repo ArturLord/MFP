@@ -8,21 +8,43 @@ import PostsBlock from '../components/Posts';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from '../components/Loader';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPosts } from 'api/posts';
-import { setCurrentPage, setPosts } from 'redux/slices/postsSlice';
+import { fetchPosts, sendComment, deleteComment, toggleLike } from 'api/posts';
+import { setCurrentPage } from 'redux/slices/postsSlice';
+import { fetchUsers } from 'api/users';
+import LoaderPost from 'components/Loaders/LoaderPost';
 
 const Posts = () => {
   const dispatch = useDispatch();
   const { posts, currentPage, status } = useSelector((state) => state.posts);
+  const { authUser } = useSelector((state) => state.user);
   const [photosTotal, setPhotosTotal] = React.useState(0);
+  const onLikeClick = (photoId) => {
+    dispatch(toggleLike({ userId: authUser.id, photoId }));
+  };
 
   const nextPage = () => {
     dispatch(setCurrentPage(currentPage + 1));
   };
 
+  const onCommentSendClick = (photoId, comment) => {
+    const newCommentId =
+      Math.max(...posts.flatMap((post) => post.comments.map((comment) => comment.id))) + 1;
+    dispatch(
+      sendComment({ nickname: authUser.nickname, photoId, text: comment, idComment: newCommentId }),
+    );
+  };
+
+  const handleDeleteComment = (photoId, commentId) => {
+    dispatch(deleteComment({ nickname: '', text: '', photoId, commentId }));
+  };
+
   React.useEffect(() => {
     dispatch(fetchPosts({ currentPage, setPhotosTotal, posts }));
   }, [currentPage]);
+
+  React.useEffect(() => {
+    dispatch(fetchUsers());
+  }, []);
 
   return (
     <>
@@ -33,14 +55,14 @@ const Posts = () => {
         ) : (
           <div>
             {status === 'loading' ? (
-              <Loader />
+              [...new Array(4)].map((_, i) => <LoaderPost key={i} />)
             ) : (
               <InfiniteScroll
-                dataLength={posts ? posts.length : 0}
+                dataLength={posts.length}
                 next={nextPage}
                 hasMore={posts.length < photosTotal}
                 loader={<Loader />}
-                endMessage={<p>Вы пролистали все посты</p>}
+                endMessage={<p style={{ textAlign: 'center' }}>Вы пролистали все посты</p>}
               >
                 {posts.map(({ author, imgUrl, id, likes, comments }) => (
                   <PostsBlock
@@ -51,8 +73,11 @@ const Posts = () => {
                     userId={author.id}
                     imgUrl={imgUrl}
                     likes={likes.length}
-                    isLikedByYou={likes.includes(author.id)}
+                    isLikedByYou={likes.includes(authUser.id)}
                     comments={comments}
+                    onLikeClick={onLikeClick}
+                    onCommentSendClick={onCommentSendClick}
+                    handleDeleteComment={(commentId) => handleDeleteComment(id, commentId)}
                   />
                 ))}
               </InfiniteScroll>

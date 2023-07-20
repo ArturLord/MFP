@@ -9,13 +9,24 @@
   color: #000;
   vertical-align: bottom;
 }
+.root {
+  display: flex;
+  align-items: flex-end;
+}
+
+.nameLoad {
+  width: 62px;
+  height: 17px;
+  background-color:#e6e6e6;
+  border-radius: 10px;
+}
 
 .placeholder {
   width: 32px;
   height: 32px;
   margin-right: 10px;
   border-radius: 50%;
-  background-color: #e6e5e5;
+  background-color: #e6e6e6;
 }
 
 .avatar {
@@ -25,4 +36,3 @@
   margin-right: 10px;
   border-radius: 50%;
 }
-

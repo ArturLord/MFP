@@ -1,8 +1,23 @@
 import React from 'react';
 
 import styles from './ProfilBlock.module.scss';
+import { useSelector } from 'react-redux';
+import LoaderProfil from 'components/Loaders/LoaderPB';
 
-const ProfilBlock = ({nickname, avatarUrl, posts, subscribers, subscribed,  lastName, firstName, description, url, openModal, setVisibleModalEdit}) => {
+const ProfilBlock = ({ posts, openModal, setVisibleModalEdit }) => {
+  const { authUser, status } = useSelector((state) => state.user);
+  
+  const changedButton = () => {
+    if (window.innerWidth > 1024) {
+      return (
+        <button ref={editRef} onClick={openModal} className={styles.editBtn}>
+          Редактировать профиль
+        </button>
+      );
+    } else {
+      return <img ref={editRef} onClick={openModal} src="/img/icons/settings.png" alt="settings" />;
+    }
+  };
 
   const editRef = React.useRef();
 
@@ -16,34 +31,47 @@ const ProfilBlock = ({nickname, avatarUrl, posts, subscribers, subscribed,  last
     document.body.addEventListener('click', handleClickOutside);
 
     return () => {
-      document.body.removeEventListener('click', handleClickOutside)
-    }
+      document.body.removeEventListener('click', handleClickOutside);
+    };
   }, []);
 
-    return (
-    <div className={styles.container}>
-      <div className={styles.content}>
-        <div>
-          <img className={styles.avatar} src={avatarUrl} alt="avatar" />
-        </div>
-        <div className={styles.rightBlock}>
-         <div className={styles.upBlock}>
-         <span>{nickname}</span>
-            <button ref={editRef} onClick={openModal} className={styles.editBtn}>Редактировать профиль</button>
-         </div>
-          <div className={styles.lowBlock}>
-            <span>{posts.length} публикаций</span>
-            <span>{subscribers.length} подписчиков</span>
-            <span>{subscribed.length} подписок</span>
+  const { nickname, avatarUrl, subscribers, subscribed, lastName, firstName, description, url } =
+    authUser;
+
+  if (status === 'error') {
+    return <h3>Произошла ошибка</h3>;
+  }
+
+  return (
+    <div className={styles.root}>
+      <div className={styles.container}>
+        {status === 'loading' ? (
+          <LoaderProfil />
+        ) : (
+          <div className={styles.content}>
+            <img className={styles.avatar} src={avatarUrl} alt="avatar" />
+            <div className={styles.rightBlock}>
+              <div className={styles.upBlock}>
+                <span>{nickname}</span>
+                {changedButton()}
+              </div>
+              <div className={styles.lowBlock}>
+                <span>{posts.length} публикаций</span>
+                <span>{subscribers.length} подписчиков</span>
+                <span>{subscribed.length} подписок</span>
+              </div>
+              <div className={styles.lowRow}>
+                <span>
+                  {firstName} {lastName}
+                </span>
+              </div>
+              <div>
+                <span>{description}</span>
+              </div>
+              <a href="/">{url}</a>
+            </div>
           </div>
-          <div className={styles.lowRow}>
-            <span>{firstName} {lastName}</span>
-          </div>
-          <div>
-            <span>{description}</span>
-          </div>
-          <a href="/">{url}</a>
-        </div>
+        )}
       </div>
     </div>
   );

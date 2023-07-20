@@ -1,55 +1,54 @@
 .modal {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    visibility: hidden;
-    z-index: 1;
-    opacity: 0;
-    overflow: hidden;
-  }
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  z-index: 1;
+  opacity: 0;
+  overflow: hidden;
+}
 .modalVisible {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0, 0.5);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+
+  .modalDialog {
+    width: 390px;
+    background-color: #fff;
+    border-radius: 10px;
+  }
+
+  .modalContent {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
+    flex-direction: column;
+    text-align: center;
+    cursor: pointer;
 
-    .modalDialog {
-        width: 390px;
-        background-color: #fff;
-        border-radius: 10px;
+    a {
+      line-height: 1.5;
+      font-size: 21px;
+      font-weight: 400;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &:not(:last-child) {
+        border-bottom: 2px solid rgb(214, 212, 212);
+      }
     }
-
-    .modalContent {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        cursor: pointer;
-
-        a {
-
-            line-height: 1.5;
-            font-size: 21px;
-            font-weight: 400;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
-            &:hover {
-                opacity: 0.8;
-            }
-
-            &:not(:last-child){
-                border-bottom: 2px solid rgb(214, 212, 212);
-               }
-        }
-    }
-    }
+  }
+}

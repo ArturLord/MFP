@@ -1,69 +1,93 @@
-.fullPosts{
-    display: flex;
-    flex-direction: column;
-    width: 600px;
-    margin: 0 auto;
-    margin-bottom: 30px;
-    border: 1px solid #dbdbdb;
-    background-color: rgb(244, 244, 244);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+.fullPosts {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
 
+  margin-bottom: 30px;
+  border: 1px solid #dbdbdb;
+  background-color: rgb(244, 244, 244);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .postsHeader {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    height: 60px;
-    padding-left: 20px;
-    background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: 60px;
+  padding-left: 20px;
+  background-color: #fff;
 }
 
 .postsImg {
-        width: 100%;
-        height: 300px;
+  width: 100%;
+  height: 300px;
 }
 
-
 .postsButton {
-    display: flex;
-    padding: 10px;
-    cursor: pointer;
+  display: flex;
+  padding: 10px;
+  cursor: pointer;
 
-    img {
-        width: 26px;
-        height: 26px;
-    }
+  img {
+    width: 26px;
+    height: 26px;
+  }
 }
 
 .postsLike {
-    font-size: 14px;
-    font-weight: 600;
-    padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px;
 }
 
 .postsComments {
-    display: flex;
-    flex-direction: column;
-    padding: 0 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px 10px 10px;
 }
 
-.postsText {
+.textareaWrapper {
+  position: relative;
+  background: #fff;
+
+  .postsText {
     border: none;
     background-color: #fff;
     padding: 10px;
     outline: none;
     resize: none;
-}
+    width: 85%;
+  }
 
+  .sendButton {
+    position: absolute;
+    background: #2196f3;
+    color: #fff;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    bottom: 5px;
+    right: 5px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:active {
+      background: #1b86de;
+    }
+  }
+}
 .likesIcon {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .commentTitle {
-    font-size: 14px;
-    font-weight: 600;
-    margin-left: 5px;
-    cursor: pointer;
-    color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 5px;
+  cursor: pointer;
+  color: #000000;
 }

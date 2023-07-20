@@ -1,74 +1,200 @@
-.containerBlock {
-  width: 100%;
-  margin-bottom: 150px;
-  padding-bottom: 80px;
-  border: 1px solid #fff;
-  border-radius: 4px;
+@media (min-width: 1024px) {
+  .containerBlock {
+    max-width: 1360px;
+    padding-bottom: 80px;
+    border: 1px solid #fff;
+    margin: 0 auto;
+    margin-bottom: 150px;
+    border-radius: 4px;
+    overflow: hidden;
 
-  .tabs {
-    width: 100%;
-    min-height: 890px;
+    .tabs {
+      width: 100%;
+      min-height: auto;
 
-    .tabList {
-      width: 420px;
-      height: 40px;
-      display: flex;
-      margin: 0 auto;
-      font-size: 15px;
+      .tabList {
+        max-width: 420px;
+        height: 40px;
+        display: flex;
+        margin: 0 auto;
+        font-size: 15px;
+      }
+
+      .tab {
+        width: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+      }
+      .activeTab {
+        border-bottom: 2px solid rgba(41, 239, 193, 0.7);
+      }
     }
+  }
 
-    .tab {
-      width: 140px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      cursor: pointer;
-    }
-    .activeTab {
-      border-bottom: 2px solid rgba(41, 239, 193, 0.7);
+  .bookmarks {
+    text-align: center;
+    margin-top: 70px;
+  }
+
+  .contentPhoto {
+    margin: 0 auto;
+    margin-top: 70px;
+    margin-bottom: 80px;
+    padding: 0 15px;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 25px;
+
+    .photoWrap {
+      filter: drop-shadow(0px 2px 6px rgb(0, 0, 0));
+      grid-column: span 2;
+
+      &:hover {
+        z-index: 2;
+      }
+
+      &:nth-child(7n + 1) {
+        grid-column: 2 / span 2;
+      }
+
+      .photo {
+        max-width: 280px;
+        height: 280px;
+        position: relative;
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        margin-bottom: -37%;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.15);
+          clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 100%);
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+
     }
   }
 }
 
-.contentPhoto {
-  margin: 0 auto;
-  margin-top: 70px;
-  margin-bottom: 80px;
-  width: 88%;
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 25px;
 
-  .photoWrap {
-    filter: drop-shadow(0px 2px 6px rgb(0, 0, 0));
-    grid-column: span 2;
+.rootLoader {
+  display: flex;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  width: 280px;
+  height: 280px;
+  background-color:#cac7c7;
+  // display: grid;
+ 
+}
+@media (max-width: 1023px) {
+  .containerBlock {
+    max-width: 1360px;
+    padding-bottom: 80px;
+    border: 1px solid #fff;
+    margin: 0 auto;
+    margin-bottom: 150px;
+    border-radius: 4px;
+    overflow: hidden;
 
-    &:hover {
-      z-index: 2;
-    }
+    .tabs {
+      width: 100%;
+      min-height: auto;
 
-    &:nth-child(7n + 1) {
-      grid-column: 2 / span 2;
-    }
-
-    .photo {
-      width: 280px;
-      height: 280px;
-      position: relative;
-      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-      margin-bottom: -37%;
-      transition: all 0.3s ease-in-out;
-
-      &:hover {
-        transform: scale(1.15);
-        clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 100%);
+      .tabList {
+        max-width: 420px;
+        height: 40px;
+        display: flex;
+        margin: 0 auto;
+        font-size: 15px;
       }
 
-      img {
+      .tab {
+        width: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+      }
+      .activeTab {
+        border-bottom: 2px solid rgba(41, 239, 193, 0.7);
+      }
+    }
+  }
+  .bookmarks {
+    text-align: center;
+    margin-top: 70px;
+  }
+
+  .contentPhoto {
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    padding: 0 1px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    .photoWrap {
+      filter: drop-shadow(0px 2px 6px rgb(0, 0, 0));
+      // grid-column: span 2;
+
+      &:hover {
+        z-index: 2;
+      }
+
+      .photo {
         width: 100%;
-        height: 100%;
+        height: 180px;
+        position: relative;
+
+        margin-bottom: 0;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          transform: scale(1.15);
+          clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 100%);
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .containerBlock {
+    padding-bottom: 0;
+    margin-bottom: 50px;
+  }
+  .bookmarks {
+    text-align: center;
+    margin-top: 70px;
+  }
+  .contentPhoto {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    margin-bottom: 1px;
+
+    .photoWrap {
+      grid-column: span 1;
+
+      .photo {
+        width: 100%;
+        height: 130px;
       }
     }
   }

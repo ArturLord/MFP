@@ -42,8 +42,7 @@ const PhotoModal = ({ isOpen, onClose, imgUrl, comments, nickname, avatarUrl }) 
           </div>
           <div>
           <div className={styles.modalIcons}>
-            <i className="fa fa-hert" />
-            <i />
+            {/* <img src="img/icons/noliked.png" alt="" /> */}
           </div>
           <div className={styles.footerModal}>
           <textarea placeholder="Ваше сообщение...">
