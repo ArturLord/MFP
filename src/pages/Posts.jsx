@@ -18,6 +18,7 @@ const Posts = () => {
   const { posts, currentPage, status } = useSelector((state) => state.posts);
   const { authUser } = useSelector((state) => state.user);
   const [photosTotal, setPhotosTotal] = React.useState(0);
+  
   const onLikeClick = (photoId) => {
     dispatch(toggleLike({ userId: authUser.id, photoId }));
   };
