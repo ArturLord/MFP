@@ -1,16 +1,17 @@
 import React from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchUsers } from 'api/users';
+import { fetchPosts, sendComment, deleteComment, toggleLike } from 'api/posts';
+
+import { setCurrentPage } from 'redux/slices/postsSlice';
 
 import Header from '../components/Header';
 import Shelf from '../components/Hf-shelf';
 import Footer from '../components/Footer';
 import PostsBlock from '../components/Posts';
-
-import InfiniteScroll from 'react-infinite-scroll-component';
-import Loader from '../components/Loader';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchPosts, sendComment, deleteComment, toggleLike } from 'api/posts';
-import { setCurrentPage } from 'redux/slices/postsSlice';
-import { fetchUsers } from 'api/users';
+import Loader from '../components/Loaders/Loader';
 import LoaderPost from 'components/Loaders/LoaderPost';
 
 const Posts = () => {
@@ -18,7 +19,7 @@ const Posts = () => {
   const { posts, currentPage, status } = useSelector((state) => state.posts);
   const { authUser } = useSelector((state) => state.user);
   const [photosTotal, setPhotosTotal] = React.useState(0);
-  
+
   const onLikeClick = (photoId) => {
     dispatch(toggleLike({ userId: authUser.id, photoId }));
   };

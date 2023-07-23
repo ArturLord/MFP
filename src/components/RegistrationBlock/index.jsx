@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+
+import { setUser } from 'redux/slices/userSlice';
+
+import FormUser from 'components/FormUser';
 
 import styles from './Registration.module.scss';
-import { setUser } from 'redux/slices/userSlice';
-import FormUser from 'components/FormUser';
 
 const RegistrationBlock = () => {
   const dispatch = useDispatch();
@@ -30,15 +32,26 @@ const RegistrationBlock = () => {
       .catch(console.error);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div className={styles.registrationBlock}>
       <div className={styles.upBlock}>
         <h1 className={styles.logo}>My Favourite Pets</h1>
         <p>Скорее регистрируйся,чтобы смотреть самые свежие актуальные фото и видео</p>
       </div>
-      <div className={styles.row}>
+      <form onSubmit={handleSubmit} className={styles.row}>
         <div className={styles.formGroup}>
-         <FormUser pass={pass} setPass={setPass} email={email} setEmail={setEmail}/>
+          <FormUser
+            text="Введите email"
+            textPass="Введите пароль"
+            pass={pass}
+            setPass={setPass}
+            email={email}
+            setEmail={setEmail}
+          />
           <button
             onClick={() => handleRegister(email, pass)}
             className={styles.btnForm}
@@ -53,7 +66,7 @@ const RegistrationBlock = () => {
             Войти через Вконтакте
           </Link>
           <p className={styles.enter}>
-            У Вас уже есть аккаунт?<Link to='/'>Войти</Link>
+            У Вас уже есть аккаунт?<Link to="/">Войти</Link>
           </p>
           <p className={styles.enterBlockP}>Скачать наше приложение можно</p>
         </div>
@@ -65,7 +78,7 @@ const RegistrationBlock = () => {
             <img src="img/icons/googleplay.png" alt="google_play" />
           </Link>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

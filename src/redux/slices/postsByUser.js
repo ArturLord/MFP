@@ -1,11 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchPostByUser } from 'api/postByUser';
 
-export const Status = {
-  LOADING: 'loading',
-  SUCCESS: 'success',
-  ERROR: 'error',
-};
+import { Status } from 'redux/@types';
 
 const initialState = {
   postsByUser: [],
@@ -37,6 +33,6 @@ const postsByUserSlice = createSlice({
   },
 });
 
-export const {setPostsByUser } = postsByUserSlice.actions;
+export const { setPostsByUser } = postsByUserSlice.actions;
 
 export default postsByUserSlice.reducer;

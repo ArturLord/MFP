@@ -1,12 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 import { setUser } from 'redux/slices/userSlice';
 
-import styles from './userLogin.module.scss';
-import { useDispatch } from 'react-redux';
 import FormUser from 'components/FormUser';
+
+import styles from './userLogin.module.scss';
 
 const UserLoginBlock = () => {
   const dispatch = useDispatch();
@@ -14,23 +15,23 @@ const UserLoginBlock = () => {
   const [pass, setPass] = React.useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (email, password ) => {
+  const handleLogin = (email, password) => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-    .then(({ user }) => {
-      dispatch(
-        setUser({
-          email: user.email,
-          id: user.uid,
-          token: user.accessToken,
-        }),
-      );
-      navigate('/account');
-    })
-    .catch(() => alert('Пользователь не найден'));
+      .then(({ user }) => {
+        dispatch(
+          setUser({
+            email: user.email,
+            id: user.uid,
+            token: user.accessToken,
+          }),
+        );
+        navigate('/account');
+      })
+      .catch(() => alert('Пользователь не найден'));
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
   };
 
@@ -48,10 +49,23 @@ const UserLoginBlock = () => {
           <h1 className={styles.userLogo}>My Favourite Pets</h1>
           <div className={styles.row}>
             <form onSubmit={handleSubmit}>
-            <div className={styles.formGroup}>
-              <FormUser pass={pass} setPass={setPass} email={email} setEmail={setEmail}/>
-              <button onClick={() => handleLogin(email, pass)} className={styles.btnForm} type="submit">Войти</button>
-            </div>
+              <div className={styles.formGroup}>
+                <FormUser
+                  text="Введите email: qwerty@mail.ru"
+                  textPass="Введите пароль: qwerty12"
+                  pass={pass}
+                  setPass={setPass}
+                  email={email}
+                  setEmail={setEmail}
+                />
+                <button
+                  onClick={() => handleLogin(email, pass)}
+                  className={styles.btnForm}
+                  type="submit"
+                >
+                  Войти
+                </button>
+              </div>
             </form>
           </div>
           <div className={styles.enterBlock}>

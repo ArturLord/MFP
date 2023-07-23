@@ -1,82 +1,80 @@
 .content {
-    display: flex;
-    justify-content: center;
-    height: auto;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  height: auto;
+  gap: 10px;
 
-    .leftBlock {
-        width: 330px;
-        height: 363px;
-        border-radius: 10px;
-        background-color: transparent;
-            border: 1px solid rgb(196, 240, 170);
-        ul {
-            li {
-                cursor: pointer;
-                font-size: 19px;
-                padding: 15px;
-                color:rgb(37, 37, 37);
-                border-bottom: 1px solid #000;
+  .leftBlock {
+    width: 330px;
+    height: 363px;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid rgb(196, 240, 170);
+    ul {
+      li {
+        cursor: pointer;
+        font-size: 19px;
+        padding: 15px;
+        color: rgb(37, 37, 37);
+        border-bottom: 1px solid #000;
 
-                &:last-child{
-                    border-bottom: none;
-                   }
-
-                   &:hover {
-                    color:rgb(255, 255, 255);
-                    transition: 0.3s ease-in-out;
-                   }
-
-                   &:active {
-                    background-color:rgb(193, 214, 233, 0.3);
-                   }
-            }
+        &:last-child {
+          border-bottom: none;
         }
-    }
 
-    .rightBlock {
-        width: 610px;
-        min-height: auto;
-        border-radius: 10px;
-        border: 1px solid rgb(196, 240, 170);
-        background: rgb(164, 221, 245, 0.2)
+        &:hover {
+          color: rgb(255, 255, 255);
+          transition: 0.3s ease-in-out;
+        }
+
+        &:active {
+          background-color: rgb(193, 214, 233, 0.3);
+        }
+      }
     }
+  }
+
+  .rightBlock {
+    width: 610px;
+    min-height: auto;
+    border-radius: 10px;
+    border: 1px solid rgb(196, 240, 170);
+    background: rgb(164, 221, 245, 0.2);
+  }
 }
 
 @media (max-width: 768px) {
-    .content {
-        // flex-direction: column;
-        width: 100%; 
-        min-height: 48vh;
-        .leftBlock {
-            width: 10%; 
-            height: 200px; 
-            text-align: center;
-            background-color: transparent;
-            border: 1px solid rgb(196, 240, 170);
+  .content {
+    // flex-direction: column;
+    width: 100%;
+    min-height: 48vh;
+    .leftBlock {
+      width: 10%;
+      height: 200px;
+      text-align: center;
+      background-color: transparent;
+      border: 1px solid rgb(196, 240, 170);
 
-            ul {
-          
-                li {
-                    position: relative;
-                    border: none;
-                    margin-bottom: 4px;
-                   img {
-                    position: absolute;
-                    top: 5px;
-                    left: 6px;
-                    width: 20px;
-                    height: 20px;
-                   }
-                }
-            }
+      ul {
+        li {
+          position: relative;
+          border: none;
+          margin-bottom: 4px;
+          img {
+            position: absolute;
+            top: 5px;
+            left: 6px;
+            width: 20px;
+            height: 20px;
+          }
         }
-
-        .rightBlock {
-            width: 100%; 
-            min-height: 210px;
-            background: rgb(164, 221, 245, 0.2)
-        }
+      }
     }
 
+    .rightBlock {
+      width: 100%;
+      min-height: 210px;
+      background: rgb(164, 221, 245, 0.2);
+    }
+  }
 }

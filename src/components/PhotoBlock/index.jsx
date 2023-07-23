@@ -1,9 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+
+import Card from '../Card';
 
 import styles from './PhotoBlock.module.scss';
-import Card from '../Card';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { useSelector } from 'react-redux';
 
 const PhotoBlock = ({ postsByUser }) => {
   const { status } = useSelector((state) => state.postsUser);

@@ -81,21 +81,17 @@
           height: 100%;
         }
       }
-
-
     }
   }
 }
-
 
 .rootLoader {
   display: flex;
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   width: 280px;
   height: 280px;
-  background-color:#cac7c7;
+  background-color: #cac7c7;
   // display: grid;
- 
 }
 @media (max-width: 1023px) {
   .containerBlock {

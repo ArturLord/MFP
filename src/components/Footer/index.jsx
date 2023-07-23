@@ -6,27 +6,13 @@ const Footer = () => {
   return (
     <footer className="footer">
       <nav>
-        <Link to="#" className="nav-footer">
-          О нас
-        </Link>
-        <Link to="#" className="nav-footer">
-          Пользователю
-        </Link>
-        <Link to="#" className="nav-footer">
-          Топ-Профили
-        </Link>
-        <Link to="#" className="nav-footer">
-          Вакансии
-        </Link>
-        <Link to="#" className="nav-footer">
-          Поддержка проекта
-        </Link>
-        <Link to="#" className="nav-footer">
-          Новости
-        </Link>
-        <Link to="#" className="nav-footer">
-          Помощь
-        </Link>
+        <Link to="#">О нас</Link>
+        <Link to="#">Пользователю</Link>
+        <Link to="#">Топ-Профили</Link>
+        <Link to="#">Вакансии</Link>
+        <Link to="#">Поддержка проекта</Link>
+        <Link to="#">Новости</Link>
+        <Link to="#">Помощь</Link>
       </nav>
     </footer>
   );

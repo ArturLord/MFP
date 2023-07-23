@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { fetchUsers } from 'api/users';
-import { Status } from './postsSlice';
+
+import { Status } from 'redux/@types';
 
 const initialState = {
   users: [],

@@ -12,21 +12,19 @@
   background-color: rgb(179, 248, 248);
 
   .leftBlock {
-display: flex;
-align-items: center;
+    display: flex;
+    align-items: center;
 
     .logo {
       font-family: 'Dancing Script';
       font-size: 38px;
     }
   }
-
 }
 .rightBlock {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 
   .search {
     padding: 18px 0px;
@@ -37,7 +35,7 @@ align-items: center;
     block-size: 27px;
     text-align: center;
 
-    &:focus{
+    &:focus {
       border: 1px solid #b9b8b8;
     }
   }
@@ -52,12 +50,11 @@ align-items: center;
       display: flex;
     }
 
-    .iconsBlock { 
-      display: flex;   
+    .iconsBlock {
+      display: flex;
       margin-right: 30px;
       gap: 30px;
- 
-     
+
       a {
         width: 32px;
         height: 32px;
@@ -71,7 +68,6 @@ align-items: center;
     }
   }
 }
-
 
 .downContent {
   display: flex;
@@ -114,7 +110,6 @@ align-items: center;
     padding: 0 7px;
   }
   .header {
-
     .leftBlock {
       display: flex;
       justify-content: center;
@@ -123,36 +118,29 @@ align-items: center;
         font-size: 23px;
       }
     }
-   .rightBlock {
-    .search {
-      width: 115px;
-      padding: 15px 0;
+    .rightBlock {
+      .search {
+        width: 115px;
+        padding: 15px 0;
+      }
     }
-   }
   }
 }
 
 @media only screen and (max-width: 552px) {
-
-.container {
-  padding: 0 7px;
-  .header{
-
-    .rightBlock {
-      justify-content: center;
-      .rightPath {
-        flex-direction: column;
-
+  .container {
+    padding: 0 7px;
+    .header {
+      .rightBlock {
+        justify-content: center;
+        .rightPath {
+          flex-direction: column;
+        }
       }
-
+    }
+    .search {
+      margin-left: 7px;
+      margin-right: 24px;
     }
   }
-  .search {
-    margin-left: 7px;
-    margin-right: 24px;
-  }
 }
-}
-
-
-

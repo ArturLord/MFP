@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './Messages.module.scss'
+import styles from './Messages.module.scss';
 
 const MessagesBlock = () => {
   return (
@@ -95,9 +95,7 @@ const MessagesBlock = () => {
               <span className={`${styles.status} ${styles.blue}`}></span>
             </div>
             <div className={`${styles.triangle} ${styles.triangleMe}`}></div>
-            <div className={`${styles.message} ${styles.blue}`}>
-             Ок
-            </div>
+            <div className={`${styles.message} ${styles.blue}`}>Ок</div>
           </li>
           <li className={styles.you}>
             <div className={styles.head}>
@@ -130,9 +128,7 @@ const MessagesBlock = () => {
               <span className={`${styles.status} ${styles.blue}`}></span>
             </div>
             <div className={`${styles.triangle} ${styles.triangleMe}`}></div>
-            <div className={`${styles.message} ${styles.blue}`}>
-             Good
-            </div>
+            <div className={`${styles.message} ${styles.blue}`}>Good</div>
           </li>
         </ul>
         <div className={styles.footer}>

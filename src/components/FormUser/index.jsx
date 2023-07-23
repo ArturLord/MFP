@@ -2,16 +2,17 @@ import React from 'react';
 
 import styles from './FormUser.module.scss';
 
-const FormUser = ({ pass, email, setPass, setEmail }) => {
+const FormUser = ({text, textPass, pass, email, setPass, setEmail }) => {
   const [passwordShown, setPasswordShown] = React.useState(false);
-
   const passRef = React.useRef(null);
 
   const togglePasswordVisiblity = () => {
     setPasswordShown(!passwordShown);
-
-    passRef.current.focus();
   };
+
+  React.useEffect(() => {
+    passRef.current.focus();
+  }, [passwordShown]);
 
   return (
     <div className={styles.formGroup}>
@@ -19,7 +20,7 @@ const FormUser = ({ pass, email, setPass, setEmail }) => {
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="Введите email"
+        placeholder={text}
       />
       <div className={styles.passWrapper}>
         <input
@@ -27,9 +28,13 @@ const FormUser = ({ pass, email, setPass, setEmail }) => {
           type={passwordShown ? 'text' : 'password'}
           value={pass}
           onChange={(e) => setPass(e.target.value)}
-          placeholder="Пароль"
+          placeholder={textPass}
         />
-        <img onClick={togglePasswordVisiblity} src="img/icons/eye.png" alt="eye" />
+        <img
+          onClick={togglePasswordVisiblity}
+          src={passwordShown ? 'img/icons/not-eye.png' : 'img/icons/eye.png'}
+          alt="eye"
+        />
       </div>
     </div>
   );

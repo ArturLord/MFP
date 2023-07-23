@@ -1,12 +1,12 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-import styles from './PhotoModal.module.scss';
 import UserBadge from 'components/UserBadge';
 import Comment from 'components/Comment';
 
-const PhotoModal = ({ isOpen, onClose, imgUrl, comments, nickname, avatarUrl }) => {
+import styles from './PhotoModal.module.scss';
 
+const PhotoModal = ({ isOpen, onClose, imgUrl, comments, nickname, avatarUrl }) => {
   React.useEffect(() => {
     const body = document.querySelector('body');
     if (isOpen) {
@@ -29,27 +29,26 @@ const PhotoModal = ({ isOpen, onClose, imgUrl, comments, nickname, avatarUrl }) 
           <img className={styles.modalImage} src={imgUrl} alt="modal" />
         </div>
         <div className={styles.rightBlock}>
-            <div>
-          <div className={styles.modalHeader}>
-            <UserBadge nickname={nickname} avatarUrl={avatarUrl} />
-          </div>
+          <div>
+            <div className={styles.modalHeader}>
+              <UserBadge nickname={nickname} avatarUrl={avatarUrl} />
+            </div>
 
-          <div className={styles.modalComments}>
-            {comments.map((comment, i) => (
-              <Comment key={i} {...comment}/>
-            ))}
-          </div>
+            <div className={styles.modalComments}>
+              {comments.map((comment, i) => (
+                <Comment key={i} {...comment} />
+              ))}
+            </div>
           </div>
           <div>
-          <div className={styles.modalIcons}>
-            {/* <img src="img/icons/noliked.png" alt="" /> */}
+            <div className={styles.modalIcons}>
+              {/* <img src="img/icons/noliked.png" alt="" /> */}
+            </div>
+            <div className={styles.footerModal}>
+              <textarea placeholder="Ваше сообщение..."></textarea>
+              <button>Отправить</button>
+            </div>
           </div>
-          <div className={styles.footerModal}>
-          <textarea placeholder="Ваше сообщение...">
-          </textarea>
-          <button>Отправить</button>
-          </div>
-        </div>
         </div>
       </div>
     </Modal>

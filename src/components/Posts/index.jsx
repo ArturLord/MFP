@@ -1,10 +1,10 @@
 import React from 'react';
 
-import styles from './Posts.module.scss';
-
 import UserBadge from '../UserBadge';
 import Comment from '../Comment';
 import PhotoModal from 'components/PhotoModal';
+
+import styles from './Posts.module.scss';
 
 const PostsBlock = ({
   userName,
@@ -32,7 +32,7 @@ const PostsBlock = ({
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault(); 
+      e.preventDefault();
       handleSendComment();
     }
   };

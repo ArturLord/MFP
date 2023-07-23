@@ -1,15 +1,16 @@
 import React from 'react';
 
-import styles from './EditProfil.module.scss'
 import UserBadge from 'components/UserBadge';
+
+import styles from './EditProfil.module.scss';
 
 const EditProfil = () => {
   return (
     <div className={styles.root}>
       <div className={styles.contentEdit}>
         <div className={styles.photoBadge}>
-            <UserBadge/>
-            <p>Загрузите фото профиля</p>
+          <UserBadge />
+          <p>Загрузите фото профиля</p>
         </div>
         <div className={styles.pass}>
           <div>
@@ -24,7 +25,7 @@ const EditProfil = () => {
             <input placeholder="Введите имя пользователя" />
             <input placeholder="Введите почту" />
             <input placeholder="Введите номер телефона" />
-            <textarea placeholder='Расскажите о себе'/>
+            <textarea placeholder="Расскажите о себе" />
           </div>
         </div>
         <button className={styles.editPassBtn}>Подтвердить изменения</button>

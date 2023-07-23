@@ -1,16 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { fetchPosts, toggleLike, sendComment, deleteComment } from 'api/posts';
 
-export const Status = {
-  LOADING: 'loading',
-  SUCCESS: 'success',
-  ERROR: 'error',
-};
+import { Status } from 'redux/@types';
 
 const initialState = {
   posts: [],
   currentPage: 1,
-  // photosTotal: 0,
   status: Status.LOADING,
 };
 

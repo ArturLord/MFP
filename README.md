@@ -4,11 +4,11 @@ My Favourite Pets
 
 Стек технологий:
 
-ReactJS
-Redux Toolkit
-React Router v6
-React Hooks
-React Content Loader
-Axios
-Prettier
-CSS-Modules/SCSS
+- ReactJS
+- Redux Toolkit
+- React Router v6
+- React Hooks
+- React Content Loader
+- Axios
+- Prettier
+- CSS-Modules/SCSS

@@ -1,8 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
+import LoaderProfil from 'components/Loaders/LoaderPB';
 
 import styles from './ProfilBlock.module.scss';
-import { useSelector } from 'react-redux';
-import LoaderProfil from 'components/Loaders/LoaderPB';
 
 const ProfilBlock = ({ posts, openModal, setVisibleModalEdit }) => {
   const { authUser, status } = useSelector((state) => state.user);

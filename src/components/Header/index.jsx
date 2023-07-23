@@ -1,10 +1,12 @@
 import React from 'react';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { removeUser } from 'redux/slices/userSlice';
+
+import UserBadge from '../UserBadge';
 
 import styles from './Header.module.scss';
-import { useLocation, Link, useNavigate } from 'react-router-dom';
-import UserBadge from '../UserBadge';
-import { useDispatch, useSelector } from 'react-redux';
-import { removeUser } from 'redux/slices/userSlice';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -23,33 +25,37 @@ const Header = () => {
   };
 
   const logoutUser = () => {
-    dispatch(removeUser())
-  }
+    dispatch(removeUser());
+  };
 
   const mediaLogo = () => {
     if (window.innerWidth > 556) {
-      return <h1 className={styles.logo}>My Favourite Pets</h1>
+      return <h1 className={styles.logo}>My Favourite Pets</h1>;
     } else {
-      return <h1 style={{fontSize: 21, fontFamily: 'Dancing Script'}}>MFP</h1>
+      return <h1 style={{ fontSize: 21, fontFamily: 'Dancing Script' }}>MFP</h1>;
     }
-  }
+  };
 
   const mediaUserBadgeName = () => {
     if (window.innerWidth > 552) {
-      return <UserBadge
-      nickname={nickname}
-      avatarUrl={avatarUrl}
-      onClickButton={onClickButton}
-      setDownBlock={setDownBlock}
-    />
+      return (
+        <UserBadge
+          nickname={nickname}
+          avatarUrl={avatarUrl}
+          onClickButton={onClickButton}
+          setDownBlock={setDownBlock}
+        />
+      );
     } else {
-      return <UserBadge
-      avatarUrl={avatarUrl}
-      onClickButton={onClickButton}
-      setDownBlock={setDownBlock}
-    />
+      return (
+        <UserBadge
+          avatarUrl={avatarUrl}
+          onClickButton={onClickButton}
+          setDownBlock={setDownBlock}
+        />
+      );
     }
-  }
+  };
 
   React.useEffect(() => {
     const handleClickOutside = (e) => {
@@ -69,45 +75,43 @@ const Header = () => {
 
   return (
     <div className={styles.header}>
-<div className={styles.container}>
-<div className={styles.leftBlock}>
-      {mediaLogo()}
-      </div>
-      {locationPage && (
-        <div className={styles.rightBlock}>
-          <div className={styles.rightPath}>
-            <input className={styles.search} type="search" placeholder="Поиск" />
-            <div className={styles.iconsBlock}>
-              <Link to="/messages">
-                <img src="img/icons/message.png" alt="message" />
-              </Link>
-              <Link to="/posts">
-                <img src="img/icons/post.png" alt="post" />
-              </Link>
-            </div>
-            <div ref={userPopupRef} className={styles.userBadgeHeader}>
-          {mediaUserBadgeName()}
-            </div>
-            {downBlock && (
-              <div onClick={onClickCloseButton} className={styles.downContent}>
-                <Link to="/account">
-                  <span>Профиль</span>
+      <div className={styles.container}>
+        <div className={styles.leftBlock}>{mediaLogo()}</div>
+        {locationPage && (
+          <div className={styles.rightBlock}>
+            <div className={styles.rightPath}>
+              <input className={styles.search} type="search" placeholder="Поиск" />
+              <div className={styles.iconsBlock}>
+                <Link to="/messages">
+                  <img src="img/icons/message.png" alt="message" />
                 </Link>
-                <Link to="/settings">
-                  <span>Настройки</span>
-                </Link>
-                <Link to="/settings/help">
-                  <span>Помощь</span>
-                </Link>
-                <Link to='/' >
-                  <span onClick={logoutUser}>Выйти из аккаунта</span>
+                <Link to="/posts">
+                  <img src="img/icons/post.png" alt="post" />
                 </Link>
               </div>
-            )}
+              <div ref={userPopupRef} className={styles.userBadgeHeader}>
+                {mediaUserBadgeName()}
+              </div>
+              {downBlock && (
+                <div onClick={onClickCloseButton} className={styles.downContent}>
+                  <Link to="/account">
+                    <span>Профиль</span>
+                  </Link>
+                  <Link to="/settings">
+                    <span>Настройки</span>
+                  </Link>
+                  <Link to="/settings/help">
+                    <span>Помощь</span>
+                  </Link>
+                  <Link to="/">
+                    <span onClick={logoutUser}>Выйти из аккаунта</span>
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      )}
-</div>
+        )}
+      </div>
     </div>
   );
 };
