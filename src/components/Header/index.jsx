@@ -1,13 +1,15 @@
 import React from 'react';
 
 import styles from './Header.module.scss';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 import UserBadge from '../UserBadge';
 import { useDispatch, useSelector } from 'react-redux';
+import { removeUser } from 'redux/slices/userSlice';
 
 const Header = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
   const userPopupRef = React.useRef();
   const { authUser } = useSelector((state) => state.user);
   const locationPage = location.pathname !== '/' && location.pathname !== '/registration';
@@ -19,6 +21,10 @@ const Header = () => {
   const onClickCloseButton = () => {
     setDownBlock(false);
   };
+
+  const logoutUser = () => {
+    dispatch(removeUser())
+  }
 
   const mediaLogo = () => {
     if (window.innerWidth > 556) {
@@ -93,8 +99,8 @@ const Header = () => {
                 <Link to="/settings/help">
                   <span>Помощь</span>
                 </Link>
-                <Link to="/">
-                  <span>Выйти из аккаунта</span>
+                <Link to='/' >
+                  <span onClick={logoutUser}>Выйти из аккаунта</span>
                 </Link>
               </div>
             )}

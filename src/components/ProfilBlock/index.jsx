@@ -6,7 +6,7 @@ import LoaderProfil from 'components/Loaders/LoaderPB';
 
 const ProfilBlock = ({ posts, openModal, setVisibleModalEdit }) => {
   const { authUser, status } = useSelector((state) => state.user);
-  
+
   const changedButton = () => {
     if (window.innerWidth > 1024) {
       return (
@@ -38,14 +38,12 @@ const ProfilBlock = ({ posts, openModal, setVisibleModalEdit }) => {
   const { nickname, avatarUrl, subscribers, subscribed, lastName, firstName, description, url } =
     authUser;
 
-  if (status === 'error') {
-    return <h3>Произошла ошибка</h3>;
-  }
-
   return (
     <div className={styles.root}>
       <div className={styles.container}>
-        {status === 'loading' ? (
+        {status === 'error' ? (
+          <h2>Произошла ошибка</h2>
+        ) : status === 'loading' ? (
           <LoaderProfil />
         ) : (
           <div className={styles.content}>
