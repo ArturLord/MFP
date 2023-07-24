@@ -6,9 +6,10 @@ import Shelf from '../components/Hf-shelf';
 import Footer from '../components/Footer';
 
 const Login = () => {
+  const isMobile = window.innerWidth > 767;
   return (
     <>
-      <Header />
+      {isMobile && <Header />}
       <div className="wrapper">
         <UserLoginBlock />
       </div>

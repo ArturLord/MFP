@@ -20,6 +20,91 @@ const ProfilBlock = ({ posts, openModal, setVisibleModalEdit }) => {
     }
   };
 
+
+  const changedUI = () => {
+    if (window.innerWidth > 767) {
+      return           <div className={styles.content}>
+      <div className={styles.leftBlock}>
+      <img className={styles.avatar} src={avatarUrl} alt="avatar" />
+        
+      </div>
+        <div className={styles.rightBlock}>
+          <div className={styles.upBlock}>
+            <span>{nickname}</span>
+            {changedButton()}
+          </div>
+          <div className={styles.lowBlock}>
+            <div className={styles.subscribed}>
+              {' '}
+              <span>{posts.length} </span>
+              <span>публикаций</span>
+            </div>
+            <div className={styles.subscribed}>
+              <span>{subscribers.length}</span>
+              <span>подписчиков</span>
+            </div>
+            <div className={styles.subscribed}>
+              <span>{subscribed.length}</span>
+              <span>подписок</span>
+            </div>
+          </div>
+          <div className={styles.lowRow}>
+            <span>
+              {firstName} {lastName}
+            </span>
+          </div>
+      <div>
+            <span>{description}</span>
+          </div>
+          <a href="/">{url}</a>
+        </div>
+      </div>
+    } else {
+      return                    <>
+      <div className={styles.content}>
+      <div className={styles.leftBlock}>
+      <img className={styles.avatar} src={avatarUrl} alt="avatar" />
+        
+      </div>
+        <div className={styles.rightBlock}>
+          <div className={styles.upBlock}>
+            <span>{nickname}</span>
+            {changedButton()}
+          </div>
+          <div className={styles.lowBlock}>
+            <div className={styles.subscribed}>
+              {' '}
+              <span>{posts.length} </span>
+              <span>публикаций</span>
+            </div>
+            <div className={styles.subscribed}>
+              <span>{subscribers.length}</span>
+              <span>подписчиков</span>
+            </div>
+            <div className={styles.subscribed}>
+              <span>{subscribed.length}</span>
+              <span>подписок</span>
+            </div>
+          </div>
+
+     
+        </div>
+      </div>
+      <div className={styles.lowContent}>
+      <div className={styles.lowRow}>
+            <span>
+              {firstName} {lastName}
+            </span>
+          </div>
+       <div>
+       <span>{description}</span>
+     </div>
+     <a href="/">{url}</a>
+     </div>
+     </>
+    }
+  }
+
   const editRef = React.useRef();
 
   React.useEffect(() => {
@@ -47,29 +132,7 @@ const ProfilBlock = ({ posts, openModal, setVisibleModalEdit }) => {
         ) : status === 'loading' ? (
           <LoaderProfil />
         ) : (
-          <div className={styles.content}>
-            <img className={styles.avatar} src={avatarUrl} alt="avatar" />
-            <div className={styles.rightBlock}>
-              <div className={styles.upBlock}>
-                <span>{nickname}</span>
-                {changedButton()}
-              </div>
-              <div className={styles.lowBlock}>
-                <span>{posts.length} публикаций</span>
-                <span>{subscribers.length} подписчиков</span>
-                <span>{subscribed.length} подписок</span>
-              </div>
-              <div className={styles.lowRow}>
-                <span>
-                  {firstName} {lastName}
-                </span>
-              </div>
-              <div>
-                <span>{description}</span>
-              </div>
-              <a href="/">{url}</a>
-            </div>
-          </div>
+<>{changedUI()}</>
         )}
       </div>
     </div>

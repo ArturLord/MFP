@@ -30,7 +30,7 @@ const Posts = () => {
 
   const onCommentSendClick = (photoId, comment) => {
     const newCommentId =
-      Math.max(...posts.flatMap((post) => post.comments.map((comment) => comment.id))) + 1;
+      Math.max(...posts.flatMap((post) => post.comments.map((comment) => +comment.id))) + 1;
     dispatch(
       sendComment({ nickname: authUser.nickname, photoId, text: comment, idComment: newCommentId }),
     );

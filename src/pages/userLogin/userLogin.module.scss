@@ -5,6 +5,7 @@
 
   @media only screen and (max-width: 767px) {
     gap: 0;
+    display: flex;
   }
 
   .leftBlock {
@@ -73,7 +74,6 @@
       display: flex;
       width: 360px;
       margin-right: 0;
-      margin-top: 20px;
     }
 
     .userLoginBlock {
@@ -83,9 +83,12 @@
       background: transparent;
 
       @media only screen and (max-width: 767px) {
+
         width: 100%;
         height: auto;
       }
+
+
 
       .enterBlock {
         .iconVk {
@@ -149,3 +152,4 @@
     }
   }
 }
+

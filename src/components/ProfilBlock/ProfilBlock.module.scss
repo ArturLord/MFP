@@ -5,7 +5,7 @@
   width: 100%;
   .container {
     width: 612px;
-    min-height: 230px;
+    min-height: auto;
     margin-top: 5px;
     margin-bottom: 40px;
     border: 1px solid #fff;
@@ -14,13 +14,13 @@
     .content {
       display: flex;
       justify-content: center;
-      align-items: center;
       height: 100%;
 
       .avatar {
         height: 160px;
         width: 160px;
         margin-left: 10px;
+        margin-top: 30px;
         margin-right: 35px;
         border-radius: 50%;
         box-shadow: 1px 1px 15px -5px black;
@@ -34,8 +34,9 @@
 
       .rightBlock {
         max-width: 380px;
-        min-height: 200px;
+        height: auto;
         margin-top: 30px;
+        margin-bottom: 30px;
         margin-right: 10px;
 
         .upBlock {
@@ -72,6 +73,10 @@
           margin-bottom: 10px;
           gap: 10px;
 
+          .subscribed {
+            display: flex;
+            gap: 5px;
+          }
           span {
             font-size: 17px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -90,8 +95,8 @@
 @media only screen and (max-width: 767px) {
   .root {
     .container {
-      width: 390px;
-      height: 160px;
+      width: 350px;
+      height: auto;
       margin-top: 5px;
       margin-bottom: 40px;
 
@@ -111,6 +116,7 @@
           flex-direction: column;
           max-width: 240px;
           margin-top: 0;
+          margin-bottom: 0;
           height: auto;
 
           .upBlock {
@@ -125,8 +131,8 @@
             }
 
             img {
-              width: 24px;
-              height: 24px;
+              width: 20px;
+              height: 20px;
             }
 
             .editBtn {
@@ -146,17 +152,30 @@
           }
 
           .lowBlock {
+
+            .subscribed {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 0;
+            }
             span {
               font-size: 11px;
               font-weight: 600;
             }
           }
 
-          .lowRow {
-            font-weight: 600;
-            margin-bottom: 5px;
-          }
+         
         }
+      }
+    }
+    .lowContent {
+      margin-top: 10px;
+      margin-left: 12px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      .lowRow {
+        font-weight: 600;
       }
     }
   }

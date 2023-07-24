@@ -6,9 +6,11 @@ import Footer from '../components/Footer';
 import RegistrationBlock from '../components/RegistrationBlock';
 
 const Registration = () => {
+  const isMobile = window.innerWidth > 767;
+
   return (
     <>
-      <Header />
+         {isMobile && <Header />}
       <div className="wrapper">
         <RegistrationBlock />
       </div>
