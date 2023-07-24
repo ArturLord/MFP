@@ -1,6 +1,14 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
+import Edit from '../@assets/IconsSettings/edit.png'
+import Pass from '../@assets/IconsSettings/pass.png'
+import Locked from '../@assets/IconsSettings/locked.png'
+import Notification from '../@assets/IconsSettings/notifications.png'
+import Info from '../@assets/IconsSettings/info.png'
+import Caution from '../@assets/IconsSettings/caution.png'
+
+
 import styles from './SettingsBlock.module.scss';
 
 const SettingsBlock = () => {
@@ -33,32 +41,32 @@ const SettingsBlock = () => {
         <ul>
           <Link to="/settings">
             <li>
-              <img src="img/IconsSettings/edit.png" alt="1" />
+              <img src={Edit} alt="1" />
             </li>
           </Link>
           <Link to="/settings/password">
             <li>
-              <img src="img/IconsSettings/pass.png" alt="2" />
+              <img src={Pass} alt="2" />
             </li>
           </Link>
           <Link to="/settings/privacy&security">
             <li>
-              <img src="img/IconsSettings/locked.png" alt="3" />
+              <img src={Locked} alt="3" />
             </li>
           </Link>
           <Link to="/settings/notifications">
             <li>
-              <img src="img/IconsSettings/notifications.png" alt="4" />
+              <img src={Notification} alt="4" />
             </li>
           </Link>
           <Link to="/settings/report&problem">
             <li>
-              <img src="img/IconsSettings/info.png" alt="5" />
+              <img src={Info} alt="5" />
             </li>
           </Link>
           <Link to="/settings/help">
             <li>
-              <img src="img/IconsSettings/caution.png" alt="6" />
+              <img src={Caution} alt="6" />
             </li>
           </Link>
         </ul>

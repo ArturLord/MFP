@@ -3,13 +3,17 @@ import React from 'react';
 import UserBadge from 'components/UserBadge';
 
 import styles from './EditProfil.module.scss';
+import { useSelector } from 'react-redux';
 
 const EditProfil = () => {
+
+  const { authUser } = useSelector((state) => state.user);
+
   return (
     <div className={styles.root}>
       <div className={styles.contentEdit}>
         <div className={styles.photoBadge}>
-          <UserBadge />
+          <UserBadge nickname={authUser.nickname} avatarUrl={authUser.avatarUrl} />
           <p>Загрузите фото профиля</p>
         </div>
         <div className={styles.pass}>

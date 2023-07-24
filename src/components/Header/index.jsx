@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { removeUser } from 'redux/slices/userSlice';
 
+import ImgMessage from '../@assets/icons/message.png'
+import ImgPost from '../@assets/icons/post.png'
+
 import UserBadge from '../UserBadge';
 
 import styles from './Header.module.scss';
@@ -83,10 +86,10 @@ const Header = () => {
               <input className={styles.search} type="search" placeholder="Поиск" />
               <div className={styles.iconsBlock}>
                 <Link to="/messages">
-                  <img src="img/icons/message.png" alt="message" />
+                  <img src={ImgMessage} alt="message" />
                 </Link>
                 <Link to="/posts">
-                  <img src="img/icons/post.png" alt="post" />
+                  <img src={ImgPost} alt="post" />
                 </Link>
               </div>
               <div ref={userPopupRef} className={styles.userBadgeHeader}>

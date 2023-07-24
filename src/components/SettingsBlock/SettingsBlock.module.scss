@@ -45,9 +45,8 @@
 
 @media (max-width: 768px) {
   .content {
-    // flex-direction: column;
     width: 100%;
-    min-height: 48vh;
+    min-height: auto;
     .leftBlock {
       width: 10%;
       height: 200px;
