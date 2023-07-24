@@ -97,13 +97,12 @@
     .container {
       width: 350px;
       height: auto;
-      margin-top: 5px;
       margin-bottom: 40px;
+      padding: 0 10px;
 
       .content {
         display: flex;
         align-items: flex-start;
-        padding: 0 10px;
 
         .avatar {
           margin-top: 10px;
