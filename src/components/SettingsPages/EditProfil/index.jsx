@@ -6,9 +6,8 @@ import styles from './EditProfil.module.scss';
 import { useSelector } from 'react-redux';
 
 const EditProfil = () => {
-
   const { authUser } = useSelector((state) => state.user);
-
+  
   return (
     <div className={styles.root}>
       <div className={styles.contentEdit}>

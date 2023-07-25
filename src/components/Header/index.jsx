@@ -10,6 +10,7 @@ import ImgPost from '../@assets/icons/post.png'
 import UserBadge from '../UserBadge';
 
 import styles from './Header.module.scss';
+import { fetchUsers } from 'api/users';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,10 @@ const Header = () => {
   const { authUser } = useSelector((state) => state.user);
   const locationPage = location.pathname !== '/' && location.pathname !== '/registration';
   const [downBlock, setDownBlock] = React.useState(false);
+
+  React.useEffect(() => {
+ dispatch(fetchUsers())
+  }, [])
 
   const onClickButton = () => {
     setDownBlock(!downBlock);
