@@ -81,7 +81,7 @@ const Notifications = () => {
             <label htmlFor="scales">Выкл</label>
           </div>
         </div>
-        <p>Ваш запрос на поддржку был обновлен</p>
+        <p>Ваш запрос на поддержку был обновлен</p>
       </div>
     </div>
   );

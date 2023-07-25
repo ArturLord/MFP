@@ -22,6 +22,7 @@ const PostsBlock = ({
   const [commentShow, setCommentShow] = React.useState(false);
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const [comment, setComment] = React.useState('');
+  const isMobile = window.innerWidth > 767;
 
   const handleSendComment = () => {
     if (comment) {
@@ -67,7 +68,7 @@ const PostsBlock = ({
       <div className={styles.postsHeader}>
         <UserBadge nickname={userName} avatarUrl={avatarUrl} id={userId} />
       </div>
-      <div onClick={() => setIsModalVisible(true)}>
+      <div onClick={isMobile ? () => setIsModalVisible(true) : () => setIsModalVisible(false)}>
         <img className={styles.postsImg} src={imgUrl} alt="img" />
       </div>
       <div className={styles.postsButton}>
