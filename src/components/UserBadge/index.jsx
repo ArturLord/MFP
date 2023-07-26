@@ -2,7 +2,8 @@ import React from 'react';
 
 import styles from './UserBadge.module.scss';
 
-const UserBadge = ({ nickname, avatarUrl, id, onClickButton, setDownBlock }) => {
+const UserBadge = ({ nickname, avatarUrl, onClickButton }) => {
+
   return (
     <div onClick={onClickButton} className={styles.UserBadge}>
       {avatarUrl ? (
@@ -10,7 +11,7 @@ const UserBadge = ({ nickname, avatarUrl, id, onClickButton, setDownBlock }) => 
       ) : (
         <div className={styles.root}>
           <div className={styles.placeholder}></div>
-          <div className={styles.nameLoad}></div>
+          {window.innerWidth > 1024 && <div className={styles.nameLoad}></div>}
         </div>
       )}
       <span className={styles.name}>{nickname}</span>

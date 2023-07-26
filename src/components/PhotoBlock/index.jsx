@@ -8,6 +8,7 @@ import styles from './PhotoBlock.module.scss';
 
 const PhotoBlock = ({ postsByUser }) => {
   const { status } = useSelector((state) => state.postsUser);
+  const isMobile = window.innerWidth > 767;
 
   if (status === 'error') {
     setTimeout(() => {
@@ -37,7 +38,12 @@ const PhotoBlock = ({ postsByUser }) => {
           <TabPanel>
             <div className={styles.contentPhoto}>
               {status === 'loading'
-                ? [...Array(4)].map((_, i) => <div key={i} className={styles.rootLoader}></div>)
+                ? [...Array(4)].map((_, i) => (
+                    <div
+                      key={i}
+                      className={isMobile ? styles.rootLoader : styles.rootLoaders}
+                    ></div>
+                  ))
                 : postsByUser?.map(({ author, imgUrl, comments, id }) => (
                     <Card
                       key={id}

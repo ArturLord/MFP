@@ -44,9 +44,9 @@ const Posts = () => {
     dispatch(fetchPosts({ currentPage, setPhotosTotal, posts }));
   }, [currentPage]);
 
-  React.useEffect(() => {
-    dispatch(fetchUsers());
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch(fetchUsers());
+  // }, []);
 
   return (
     <>

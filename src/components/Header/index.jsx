@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { removeUser } from 'redux/slices/userSlice';
+import { removeUser, setAuthUser } from 'redux/slices/userSlice';
 
 import ImgMessage from '../@assets/icons/message.png'
 import ImgPost from '../@assets/icons/post.png'

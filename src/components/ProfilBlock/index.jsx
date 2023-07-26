@@ -127,7 +127,7 @@ const ProfilBlock = ({ posts, openModal, setVisibleModalEdit }) => {
     <div className={styles.root}>
       <div className={styles.container}>
         {status === 'error' ? (
-          <h2>Произошла ошибка</h2>
+          <h5>Произошла ошибка при получении пользователя :(</h5>
         ) : status === 'loading' ? (
           <LoaderProfil />
         ) : (

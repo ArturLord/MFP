@@ -19,14 +19,9 @@ const PersonalAccount = () => {
   const navigate = useNavigate();
   const isAuth = useAuth();
   const { posts } = useSelector((state) => state.posts);
-  const { authUser } = useSelector((state) => state.user);
   const { postsByUser } = useSelector((state) => state.postsUser);
   const [visibleModalEdit, setVisibleModalEdit] = React.useState(false);
   const isMounted = React.useRef(false);
-
-  React.useEffect(() => {
-    dispatch(fetchUsers());
-  }, []);
 
   React.useEffect(() => {
     dispatch(fetchPostByUser());

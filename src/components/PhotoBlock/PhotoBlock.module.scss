@@ -91,8 +91,16 @@
   width: 280px;
   height: 280px;
   background-color: #cac7c7;
-  // display: grid;
 }
+
+.rootLoaders {
+  display: flex;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 5px;
+  background-color: #cac7c7;
+}
+
 @media (max-width: 1023px) {
   .containerBlock {
     max-width: 1360px;
@@ -192,7 +200,7 @@
 
       .photo {
         width: 100%;
-        height: 130px;
+        height: 120px;
       }
     }
   }

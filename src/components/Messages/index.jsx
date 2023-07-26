@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './Messages.module.scss';
 
 const MessagesBlock = () => {
+  
   return (
     <div className={styles.container}>
       <div className={styles.leftBlock}>
