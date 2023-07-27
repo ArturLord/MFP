@@ -25,7 +25,6 @@ const NavBar = () => {
 
   return (
     <nav className={styles.nav}>
-      <div className={styles.container}>
         <div className={styles.navWrapper}>
           <Link to="/posts">
             <img src={ImgPost} alt="" />
@@ -43,7 +42,6 @@ const NavBar = () => {
             <UserBadge avatarUrl={authUser.avatarUrl} />
           </Link>
         </div>
-      </div>
     </nav>
   );
 };
