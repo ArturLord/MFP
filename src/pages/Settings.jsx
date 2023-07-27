@@ -11,11 +11,15 @@ import PrivacySecurity from 'components/SettingsPages/PrivacySecurity';
 import Notifications from 'components/SettingsPages/Notifications';
 import ReportProblem from 'components/SettingsPages/ReportProblem';
 import Help from 'components/SettingsPages/Help';
+import NavBar from 'components/NavBar';
+import HeaderMobile from 'components/HeaderMobile';
 
 const Settings = () => {
+  const isMobile = window.innerWidth < 767;
+
   return (
     <>
-      <Header />
+      {isMobile ? <HeaderMobile /> : <Header />}
       <div className="wrapper">
         <Routes>
           <Route path="/" element={<SettingsBlock />}>
@@ -28,6 +32,7 @@ const Settings = () => {
           </Route>
         </Routes>
       </div>
+      {isMobile && <NavBar />}
       <Shelf />
       <Footer />
     </>

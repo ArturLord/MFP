@@ -3,7 +3,6 @@ import React from 'react';
 import styles from './UserBadge.module.scss';
 
 const UserBadge = ({ nickname, avatarUrl, onClickButton }) => {
-
   return (
     <div onClick={onClickButton} className={styles.UserBadge}>
       {avatarUrl ? (

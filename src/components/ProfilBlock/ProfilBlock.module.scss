@@ -103,6 +103,7 @@
       .content {
         display: flex;
         align-items: flex-start;
+        margin-top: 20px;
 
         .avatar {
           margin-top: 10px;
@@ -153,7 +154,6 @@
           }
 
           .lowBlock {
-
             .subscribed {
               display: flex;
               flex-direction: column;
@@ -165,8 +165,6 @@
               font-weight: 600;
             }
           }
-
-         
         }
       }
     }

@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { removeUser, setAuthUser } from 'redux/slices/userSlice';
 
-import ImgMessage from '../@assets/icons/message.png'
-import ImgPost from '../@assets/icons/post.png'
+import ImgMessage from '../@assets/icons/message.png';
+import ImgPost from '../@assets/icons/post.png';
 
 import UserBadge from '../UserBadge';
 
@@ -22,8 +22,8 @@ const Header = () => {
   const [downBlock, setDownBlock] = React.useState(false);
 
   React.useEffect(() => {
- dispatch(fetchUsers())
-  }, [])
+    dispatch(fetchUsers());
+  }, []);
 
   const onClickButton = () => {
     setDownBlock(!downBlock);

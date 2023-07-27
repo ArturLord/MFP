@@ -91,3 +91,9 @@
   cursor: pointer;
   color: #000000;
 }
+
+@media only screen and (max-width: 767px) {
+  .fullPosts {
+    margin-top: 30px;
+  }
+}

@@ -13,12 +13,15 @@ import Footer from '../components/Footer';
 import PostsBlock from '../components/Posts';
 import Loader from '../components/Loaders/Loader';
 import LoaderPost from 'components/Loaders/LoaderPost';
+import HeaderMobile from 'components/HeaderMobile';
+import NavBar from 'components/NavBar';
 
 const Posts = () => {
   const dispatch = useDispatch();
   const { posts, currentPage, status } = useSelector((state) => state.posts);
   const { authUser } = useSelector((state) => state.user);
   const [photosTotal, setPhotosTotal] = React.useState(0);
+  const isMobile = window.innerWidth < 767;
 
   const onLikeClick = (photoId) => {
     dispatch(toggleLike({ userId: authUser.id, photoId }));
@@ -50,7 +53,7 @@ const Posts = () => {
 
   return (
     <>
-      <Header />
+      {isMobile ? <HeaderMobile /> : <Header />}
       <div className="wrapper">
         {status === 'error' ? (
           <h2>Произошла ошибка</h2>
@@ -87,6 +90,7 @@ const Posts = () => {
           </div>
         )}
       </div>
+      {isMobile && <NavBar />}
       <Shelf />
       <Footer />
     </>

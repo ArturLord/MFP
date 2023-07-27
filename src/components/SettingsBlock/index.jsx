@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
-import Edit from '../@assets/IconsSettings/edit.png'
-import Pass from '../@assets/IconsSettings/pass.png'
-import Locked from '../@assets/IconsSettings/locked.png'
-import Notification from '../@assets/IconsSettings/notifications.png'
-import Info from '../@assets/IconsSettings/info.png'
-import Caution from '../@assets/IconsSettings/caution.png'
-
+import Edit from '../@assets/IconsSettings/edit.png';
+import Pass from '../@assets/IconsSettings/pass.png';
+import Locked from '../@assets/IconsSettings/locked.png';
+import Notification from '../@assets/IconsSettings/notifications.png';
+import Info from '../@assets/IconsSettings/info.png';
+import Caution from '../@assets/IconsSettings/caution.png';
 
 import styles from './SettingsBlock.module.scss';
 
