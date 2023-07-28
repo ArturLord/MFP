@@ -20,7 +20,9 @@ const PersonalAccount = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuth = useAuth();
+  console.log(isAuth);
   const { posts } = useSelector((state) => state.posts);
+  const { email } = useSelector((state) => state.user);
   const { postsByUser } = useSelector((state) => state.postsUser);
   const [visibleModalEdit, setVisibleModalEdit] = React.useState(false);
   const isMounted = React.useRef(false);
@@ -42,30 +44,30 @@ const PersonalAccount = () => {
     isMounted.current = true;
   }, [isAuth]);
 
+  React.useEffect(() => {
+    if (!isAuth || !email) {
+      navigate('/');
+    }
+  }, [navigate, isAuth, email]);
+
   return (
     <>
-      {isAuth ? (
-        <>
-          {isMobile ? <HeaderMobile /> : <Header />}
-          <ModalEditBlock
-            visibleModalEdit={visibleModalEdit}
-            closeModal={() => setVisibleModalEdit(false)}
-          />
-          <div className="wrapper">
-            <ProfilBlock
-              openModal={() => setVisibleModalEdit(true)}
-              setVisibleModalEdit={setVisibleModalEdit}
-              posts={postsByUser}
-            />
-            <PhotoBlock postsByUser={postsByUser} posts={posts} />
-            <Shelf />
-            <Footer />
-          </div>
-          {isMobile && <NavBar />}
-        </>
-      ) : (
-        navigate('/')
-      )}
+      {isMobile ? <HeaderMobile /> : <Header />}
+      <ModalEditBlock
+        visibleModalEdit={visibleModalEdit}
+        closeModal={() => setVisibleModalEdit(false)}
+      />
+      <div className="wrapper">
+        <ProfilBlock
+          openModal={() => setVisibleModalEdit(true)}
+          setVisibleModalEdit={setVisibleModalEdit}
+          posts={postsByUser}
+        />
+        <PhotoBlock postsByUser={postsByUser} posts={posts} />
+        <Shelf />
+        <Footer />
+      </div>
+      {isMobile && <NavBar />}
     </>
   );
 };

@@ -7,13 +7,18 @@ import Comment from 'components/Comment';
 import styles from './PhotoModal.module.scss';
 
 const PhotoModal = ({ isOpen, onClose, imgUrl, comments, nickname, avatarUrl }) => {
+ 
   React.useEffect(() => {
     const body = document.querySelector('body');
     if (isOpen) {
-      body.classList.add(`${styles.bodyOverflow}`);
+      body.classList.add(styles.bodyOverflow);
     } else {
-      body.classList.remove(`${styles.bodyOverflow}`);
+      body.classList.remove(styles.bodyOverflow);
     }
+  
+    return () => {
+      body.classList.remove(styles.bodyOverflow);
+    };
   }, [isOpen]);
 
   return (

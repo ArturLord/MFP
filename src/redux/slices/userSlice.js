@@ -3,12 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchUsers } from 'api/users';
 
 import { Status } from 'redux/@types';
+import { getIsAuthLS } from 'utils/getisAuthLS';
 
 const initialState = {
   users: [],
   authUser: {},
   status: Status.LOADING,
-  email: null,
+  email: getIsAuthLS(),
   token: null,
   id: null,
 };
@@ -29,6 +30,14 @@ const userSlice = createSlice({
       state.email = action.payload.email;
       state.token = action.payload.token;
       state.id = action.payload.id;
+    
+      const json = JSON.stringify({
+        isAuth: true,
+        email: action.payload.email,
+        token: action.payload.token,
+        id: action.payload.id,
+      });
+      localStorage.setItem('auth', json);
     },
 
     removeUser(state) {

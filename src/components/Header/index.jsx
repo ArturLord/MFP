@@ -33,6 +33,7 @@ const Header = () => {
   };
 
   const logoutUser = () => {
+    localStorage.removeItem('auth');
     dispatch(removeUser());
   };
 

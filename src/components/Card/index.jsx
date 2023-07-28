@@ -1,21 +1,30 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import PhotoModal from 'components/PhotoModal';
 
 import styles from '../PhotoBlock/PhotoBlock.module.scss';
-import Loader from 'components/Loaders/Loader';
 
 const Card = ({ imgUrl, comments, avatarUrl, userName }) => {
-  const status = useSelector((state) => state.postsUser.status);
   const [isModalVisible, setIsModalVisible] = React.useState(false);
- const isMobile = window.innerWidth > 767
+  const isMobile = typeof window !== 'undefined' && window.innerWidth > 767;
+  const navigate = useNavigate();
+
+  const onClickModalPosts = () => {
+    if (isMobile) {
+      setIsModalVisible(true);
+    } else {
+      setIsModalVisible(false);
+      navigate('/postsByUser');
+    }
+  };
 
   return (
     <>
-      <div onClick={() => setIsModalVisible(true)} className={styles.photoWrap}>
+      <div onClick={onClickModalPosts} className={styles.photoWrap}>
         <div className={styles.photo}>
-            <img src={imgUrl} alt="a" />
+          <img src={imgUrl} alt="a" />
         </div>
       </div>
       <PhotoModal

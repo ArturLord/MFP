@@ -2,6 +2,9 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
+import ImgBack from '../@assets/icons/back.png'
+import ImgDots from '../@assets/icons/dots.png'
+
 import styles from './HeaderMobile.module.scss';
 
 const HeaderMobile = () => {
@@ -32,9 +35,9 @@ const HeaderMobile = () => {
   return (
     <div className={styles.root}>
       <Link to="/account">
-        <img src="img/icons/back.png" alt="" />
+        <img src={ImgBack} alt="" />
       </Link>
-      <img ref={userPopupRef} onClick={onClickButton} src="img/icons/dots.png" alt="" />
+      <img ref={userPopupRef} onClick={onClickButton} src={ImgDots} alt="" />
       {downBlock && (
         <div onClick={onClickCloseButton} className={styles.downContent}>
           <Link to="/account">

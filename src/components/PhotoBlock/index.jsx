@@ -10,11 +10,15 @@ const PhotoBlock = ({ postsByUser }) => {
   const { status } = useSelector((state) => state.postsUser);
   const isMobile = window.innerWidth > 767;
 
-  if (status === 'error') {
-    setTimeout(() => {
-      return alert('Произошла ошибка при получении фотографий');
-    }, 2000);
-  }
+  React.useEffect(() => {
+    if (status === 'error') {
+      const timeoutId = setTimeout(() => {
+        alert('Произошла ошибка при получении фотографий');
+      }, 2000);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [status]);
 
   return (
     <>

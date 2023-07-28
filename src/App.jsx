@@ -9,6 +9,7 @@ import Posts from './pages/Posts';
 import Messages from 'pages/Messages';
 
 import './App.scss';
+import PostsUser from 'pages/PostsUser';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/account" element={<PersonalAccount />} />
       <Route path="/messages" element={<Messages />} />
       <Route path="/posts" element={<Posts />} />
+      <Route path="/postsByUser" element={<PostsUser />} />
     </Routes>
   );
 }

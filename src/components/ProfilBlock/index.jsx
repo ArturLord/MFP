@@ -7,6 +7,7 @@ import styles from './ProfilBlock.module.scss';
 
 const ProfilBlock = ({ posts, openModal, setVisibleModalEdit }) => {
   const { authUser, status } = useSelector((state) => state.user);
+  const editRef = React.useRef();
 
   const changedButton = () => {
     if (window.innerWidth > 1024) {
@@ -104,7 +105,7 @@ const ProfilBlock = ({ posts, openModal, setVisibleModalEdit }) => {
     }
   };
 
-  const editRef = React.useRef();
+
 
   React.useEffect(() => {
     const handleClickOutside = (e) => {
