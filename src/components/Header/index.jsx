@@ -1,20 +1,21 @@
 import React from 'react';
-import { useLocation, Link, useNavigate } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { removeUser, setAuthUser } from 'redux/slices/userSlice';
+import { removeUser } from 'redux/slices/userSlice';
 
 import ImgMessage from '../@assets/icons/message.png';
 import ImgPost from '../@assets/icons/post.png';
 
 import UserBadge from '../UserBadge';
 
+import Logo from '../@assets/logo.png'
+
 import styles from './Header.module.scss';
 
 const Header = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const navigate = useNavigate();
   const userPopupRef = React.useRef();
   const { authUser } = useSelector((state) => state.user);
   const locationPage = location.pathname !== '/' && location.pathname !== '/registration';
@@ -34,7 +35,7 @@ const Header = () => {
 
   const mediaLogo = () => {
     if (window.innerWidth > 556) {
-      return <h1 className={styles.logo}>My Favourite Pets</h1>;
+      return <img src={Logo} alt='logo'/>;
     } else {
       return <h1 style={{ fontSize: 21, fontFamily: 'Dancing Script' }}>MFP</h1>;
     }

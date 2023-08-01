@@ -22,3 +22,14 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+
+  .footer {
+    nav {
+      a {
+        font-size: 12px;
+      }
+    }
+  }
+}

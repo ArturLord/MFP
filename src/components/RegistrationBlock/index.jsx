@@ -7,6 +7,8 @@ import { setUser } from 'redux/slices/userSlice';
 
 import FormUser from 'components/FormUser';
 
+import Logo from '../@assets/logo.png'
+
 import styles from './Registration.module.scss';
 
 const RegistrationBlock = () => {
@@ -39,7 +41,7 @@ const RegistrationBlock = () => {
   return (
     <div className={styles.registrationBlock}>
       <div className={styles.upBlock}>
-        <h1 className={styles.logo}>My Favourite Pets</h1>
+      <img className={styles.logo} src={Logo} alt='logo'/>
         <p>Скорее регистрируйся,чтобы смотреть самые свежие актуальные фото и видео</p>
       </div>
       <form onSubmit={handleSubmit} className={styles.row}>
