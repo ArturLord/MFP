@@ -7,7 +7,7 @@ import { setUser } from 'redux/slices/userSlice';
 
 import FormUser from 'components/FormUser';
 
-import Logo from '../@assets/logo.png'
+import Logo from '../@assets/logoForm.png'
 
 import styles from './Registration.module.scss';
 

@@ -7,7 +7,7 @@ import { setUser } from 'redux/slices/userSlice';
 
 import FormUser from 'components/FormUser';
 
-import Logo from '../../components/@assets/logo.png'
+import Logo from '../../components/@assets/logoForm.png'
 
 import styles from './userLogin.module.scss';
 
