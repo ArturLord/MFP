@@ -6,10 +6,9 @@ import ImgMessage from '../@assets/icons/message.png';
 import ImgNot from '../@assets/IconsSettings/notifications.png';
 import ImgSearch from '../@assets/icons/search.png';
 
-import styles from './NavBar.module.scss';
-import UserBadge from 'components/UserBadge';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUsers } from 'api/users';
+
+import styles from './NavBar.module.scss';
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -37,10 +36,6 @@ const NavBar = () => {
       currentItem.errorBlockIcons();
     }
   };
-
-  React.useEffect(() => {
-    dispatch(fetchUsers());
-  }, [dispatch]);
 
   return (
     <nav className={styles.nav}>

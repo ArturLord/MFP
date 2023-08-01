@@ -10,7 +10,6 @@ import ModalEditBlock from '../components/ModalEditBlock';
 
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'hooks/useAuth';
-import { fetchUsers } from 'api/users';
 import { fetchPostByUser } from 'api/postByUser';
 import { fetchPosts } from 'api/posts';
 import NavBar from 'components/NavBar';
@@ -18,11 +17,8 @@ import HeaderMobile from 'components/HeaderMobile';
 
 const PersonalAccount = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const isAuth = useAuth();
-  console.log(isAuth);
   const { posts } = useSelector((state) => state.posts);
-  const { email } = useSelector((state) => state.user);
   const { postsByUser } = useSelector((state) => state.postsUser);
   const [visibleModalEdit, setVisibleModalEdit] = React.useState(false);
   const isMounted = React.useRef(false);
@@ -43,12 +39,6 @@ const PersonalAccount = () => {
     }
     isMounted.current = true;
   }, [isAuth]);
-
-  React.useEffect(() => {
-    if (!isAuth || !email) {
-      navigate('/');
-    }
-  }, [navigate, isAuth, email]);
 
   return (
     <>

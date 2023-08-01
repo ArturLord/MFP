@@ -2,7 +2,6 @@ import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchUsers } from 'api/users';
 import { fetchPosts, sendComment, deleteComment, toggleLike } from 'api/posts';
 
 import { setCurrentPage } from 'redux/slices/postsSlice';
@@ -46,10 +45,6 @@ const Posts = () => {
   React.useEffect(() => {
     dispatch(fetchPosts({ currentPage, setPhotosTotal, posts }));
   }, [currentPage]);
-
-  // React.useEffect(() => {
-  //   dispatch(fetchUsers());
-  // }, []);
 
   return (
     <>

@@ -1,27 +1,14 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import Login from './pages/Login';
-import Registration from './pages/Registration';
-import Settings from './pages/Settings';
-import PersonalAccount from './pages/PersonalAccount';
-import Posts from './pages/Posts';
-import Messages from 'pages/Messages';
+import HomePage from 'pages/HomePage';
+import Authentication from 'pages/Authentication';
 
 import './App.scss';
-import PostsUser from 'pages/PostsUser';
 
 function App() {
-  return (
-    <Routes>
-      <Route exact path="/" element={<Login />} />
-      <Route path="/registration" element={<Registration />} />
-      <Route path="/settings/*" element={<Settings />} />
-      <Route path="/account" element={<PersonalAccount />} />
-      <Route path="/messages" element={<Messages />} />
-      <Route path="/posts" element={<Posts />} />
-      <Route path="/postsByUser" element={<PostsUser />} />
-    </Routes>
-  );
+  const { email } = useSelector((state) => state.user);
+
+  return <>{email ? <HomePage /> : <Authentication />}</>;
 }
 export default App;
