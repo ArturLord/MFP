@@ -6,9 +6,10 @@ const LoaderProfil = (props) => (
     speed={2}
     width={window.innerWidth > 1024 ? 610 : 300}
     height={window.innerWidth > 1024 ? 225 : 120}
+    style={{marginTop: 15}}
     viewBox="0 0 610 230"
     backgroundColor="#cecccc"
-    foregroundColor="#d7d6d6"
+    foregroundColor="#c4c0c0"
     {...props}
   >
     <circle cx="110" cy="114" r="78" />

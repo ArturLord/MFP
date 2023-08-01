@@ -25,7 +25,7 @@ const NavBar = () => {
     { path: '', icon: ImgSearch, errorBlockIcons },
     { path: '/messages', icon: ImgMessage },
     { path: '', icon: ImgNot, errorBlockIcons },
-    { path: '/account', icon: authUser.avatarUrl, className: styles.activeUser },
+    { path: '/account', icon: authUser.avatarUrl, activeUser: styles.activeUser },
   ];
 
   const activeIndex = navItems.findIndex((item) => item.path === location.pathname);
@@ -47,14 +47,13 @@ const NavBar = () => {
       <div className={styles.navWrapper}>
         {navItems.map((item, index) => (
           <Link key={index} to={item.path}>
-            {item.icon && (
-              <img
-                onClick={() => onClickIconsNav(index)}
-                className={`${activeIndex === index ? styles.active : ''} ${item.className || ''}`}
-                src={item.icon}
-                alt="imgNav"
-              />
-            )}
+            <img
+              onClick={() => onClickIconsNav(index)}
+              className={`${activeIndex === index ? styles.active : ''} ${
+                index === navItems.length - 1 && !authUser.avatarUrl ? item.activeUser : ''
+              }`}
+              src={item.icon}
+            />
           </Link>
         ))}
       </div>
