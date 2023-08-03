@@ -45,7 +45,7 @@ const NavBar = () => {
             <img
               onClick={() => onClickIconsNav(index)}
               className={`${activeIndex === index ? styles.active : ''} ${
-                index === navItems.length - 1 && !authUser.avatarUrl ? item.activeUser : ''
+                index === navItems.length - 1 && !authUser.avatarUrl ? item.activeUser : item.activeUser
               }`}
               src={item.icon}
             />
