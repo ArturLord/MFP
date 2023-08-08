@@ -35,7 +35,7 @@ const PersonalAccount = () => {
   React.useEffect(() => {
     if (isMounted.current) {
       const json = JSON.stringify(isAuth);
-      localStorage.setItem('auth', json);
+      sessionStorage.setItem('auth', json);
     }
     isMounted.current = true;
   }, [isAuth]);

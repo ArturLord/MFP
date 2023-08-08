@@ -1,13 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import { Link } from 'react-router-dom';
+
+import { removeUser } from 'redux/slices/userSlice';
 
 import ImgBack from '../@assets/icons/back.png'
 import ImgDots from '../@assets/icons/dots.png'
 
 import styles from './HeaderMobile.module.scss';
 
+
 const HeaderMobile = () => {
+  const dispatch = useDispatch();
   const userPopupRef = React.useRef();
   const [downBlock, setDownBlock] = React.useState(false);
 
@@ -16,6 +21,11 @@ const HeaderMobile = () => {
   };
   const onClickCloseButton = () => {
     setDownBlock(false);
+  };
+
+  const logoutUser = () => {
+    sessionStorage.removeItem('auth');
+    dispatch(removeUser());
   };
 
   React.useEffect(() => {
@@ -50,7 +60,7 @@ const HeaderMobile = () => {
             <span>Помощь</span>
           </Link>
           <Link to="/">
-            <span>Выйти из аккаунта</span>
+            <span onClick={logoutUser}>Выйти из аккаунта</span>
           </Link>
         </div>
       )}

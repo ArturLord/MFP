@@ -29,7 +29,7 @@ const Header = () => {
   };
 
   const logoutUser = () => {
-    localStorage.removeItem('auth');
+    sessionStorage.removeItem('auth');
     dispatch(removeUser());
   };
 

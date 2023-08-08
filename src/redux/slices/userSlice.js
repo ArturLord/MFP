@@ -37,7 +37,7 @@ const userSlice = createSlice({
         token: action.payload.token,
         id: action.payload.id,
       });
-      localStorage.setItem('auth', json);
+      sessionStorage.setItem('auth', json);
     },
 
     removeUser(state) {
