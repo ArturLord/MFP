@@ -17,11 +17,11 @@ const EditProfil = () => {
         </div>
         <div className={styles.pass}>
           <div>
-            <label>Ваше имя</label>
-            <label>Имя пользователя</label>
-            <label>Почта</label>
-            <label>Телефон</label>
-            <label>О себе</label>
+            <label className={styles.editLabel}>Ваше имя</label>
+            <label className={styles.editLabel}>Имя пользователя</label>
+            <label className={styles.editLabel}>Почта</label>
+            <label className={styles.editLabel}>Телефон</label>
+            <label className={styles.editLabel}>О себе</label>
           </div>
           <div>
             <input placeholder="Ваше имя" />

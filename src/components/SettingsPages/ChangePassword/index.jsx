@@ -8,9 +8,9 @@ const ChangePassword = () => {
       <div className={styles.contentEdit}>
         <div className={styles.pass}>
           <div>
-            <label>Старый пароль</label>
-            <label>Новый пароль</label>
-            <label>Подтвердите пароль</label>
+            <label className={styles.passLabel}>Старый пароль</label>
+            <label className={styles.passLabel}>Новый пароль</label>
+            <label className={styles.passLabel}>Подтвердите пароль</label>
           </div>
           <div>
             <input placeholder="Введите старый пароль" />
