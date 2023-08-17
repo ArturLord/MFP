@@ -11,6 +11,7 @@
 
 html {
   background: rgb(71, 126, 189);
+  height: 100vh;
 }
 
 body {
@@ -20,6 +21,7 @@ body {
   background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgb(71, 126, 189) 100%);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  // height: 100vh;
 }
 
 .wrapper {
@@ -45,7 +47,7 @@ body {
 @media only screen and (max-width: 767px) {
   .wrapper {
     width: 100%;
-    margin-top: 30px;
+    margin-top: 0;
     margin-bottom: 10px;
   }
 }
