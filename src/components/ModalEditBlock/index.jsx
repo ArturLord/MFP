@@ -1,10 +1,11 @@
 import React from 'react';
 
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import styles from './ModalEditBlock.module.scss';
-import { useDispatch } from 'react-redux';
 import { removeUser } from 'redux/slices/userSlice';
+
+import styles from './ModalEditBlock.module.scss';
 
 const ModalEditBlock = ({ visibleModalEdit, closeModal }) => {
   const dispatch = useDispatch();
