@@ -11,6 +11,17 @@
     border: 1px solid #fff;
     border-radius: 4px;
 
+    .errorUsers {
+     display: flex;
+     justify-content: center;
+     padding: 10px 0;
+
+     span {
+      margin-left: 5px;
+      font-size: 19px;
+     }
+    }
+
     .content {
       display: flex;
       justify-content: center;

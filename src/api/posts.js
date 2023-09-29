@@ -7,7 +7,7 @@ export const fetchPosts = createAsyncThunk(
     const prevPosts = posts;
 
     const res = await axios.get(
-      `https://deebf77f001a3003.mokky.dev/posts?page=${currentPage}&limit=5`,
+      `https://cb8db50fad985f5f.mokky.dev/posts?page=${currentPage}&limit=5`,
     );
 
     if (currentPage === 1) {
@@ -37,7 +37,7 @@ export const toggleLike = createAsyncThunk(
         newPhoto.likes.push(userId);
       }
 
-      await axios.patch(`https://deebf77f001a3003.mokky.dev/posts/${photoId}`, newPhoto);
+      await axios.patch(`https://cb8db50fad985f5f.mokky.dev/posts/${photoId}`, newPhoto);
 
       return newPhoto;
     } catch (error) {
@@ -63,7 +63,7 @@ export const sendComment = createAsyncThunk(
       const newComment = { id: idComment, nickname, text };
       newPosts.comments.push(newComment);
 
-      await axios.patch(`https://deebf77f001a3003.mokky.dev/posts/${photoId}`, newPosts);
+      await axios.patch(`https://cb8db50fad985f5f.mokky.dev/posts/${photoId}`, newPosts);
 
       return newPosts;
     } catch (error) {
@@ -85,7 +85,7 @@ export const deleteComment = createAsyncThunk(
         comments: photo.comments.filter((comment) => comment.id !== commentId),
       };
 
-      await axios.patch(`https://deebf77f001a3003.mokky.dev/posts/${photoId}`, newPosts);
+      await axios.patch(`https://cb8db50fad985f5f.mokky.dev/posts/${photoId}`, newPosts);
 
       return newPosts;
     } catch (error) {

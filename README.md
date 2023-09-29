@@ -10,5 +10,4 @@ My Favourite Pets
 - React Hooks
 - React Content Loader
 - Axios
-- Prettier
 - CSS-Modules/SCSS
